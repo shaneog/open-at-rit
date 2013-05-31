@@ -1,4 +1,5 @@
 require 'sinatra'
+require './location_parser'
 
 Encoding.default_external = 'utf-8'
 

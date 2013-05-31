@@ -33,6 +33,12 @@
     </ul>
   </div></nav>
 
+  <ul>
+    <% LocationParser.locations.each do |location| %>
+      <li><%= p location %></li>
+    <% end %>
+  </ul>
+
   <!-- footer -->
   <footer>
     &copy; 2013 Nicolas McCurdy<br>
