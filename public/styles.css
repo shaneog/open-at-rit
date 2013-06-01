@@ -8,13 +8,9 @@ body {
 
 .location {
   text-align: center;
-  background-color: #f3f3f3;
-  box-shadow: 0 0 6px 2px #b0b2ab;
 }
 
 .location:hover {
-  background-color: #fff;
-  box-shadow: 0 0 12px 3px #b0b2ab;
 }
 
 .open h2 {
