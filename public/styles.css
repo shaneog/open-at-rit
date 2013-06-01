@@ -1,5 +1,6 @@
 body {
-  padding-top: 60px;
+  padding-top: 75px;
+  background-color: rgb(221, 228, 230);
 }
 
 footer {
@@ -9,6 +10,10 @@ footer {
 .brand-rit {
   font-family: Georgia, serif;
   color: rgb(243, 110, 33);
+}
+
+.brand:hover .brand-rit {
+  color: rgb(29, 210, 175);
 }
 
 .location {
