@@ -9,15 +9,25 @@ body {
 
 .location {
   text-align: center;
+  background: white;
+  padding: 0;
 }
 
-.location:hover {
+.name {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 42px;
+  padding: 10px;
+  border-radius: 6px 6px 0 0;
+  margin-bottom: 10px;
 }
 
-.open h2 {
-  color: green;
+.open .name {
+  color: white;
+  background-color: green;
 }
 
-.closed h2 {
-  color: red;
+.closed .name {
+  color: white;
+  background-color: red;
 }
