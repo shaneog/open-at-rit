@@ -2,8 +2,9 @@ body {
   padding-top: 60px;
 }
 
-.brand {
+.brand-rit {
   font-family: Georgia, serif;
+  color: rgb(243, 110, 33);
 }
 
 .location {
