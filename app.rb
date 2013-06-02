@@ -1,11 +1,14 @@
 require 'sinatra'
+require 'yaml'
 
 Encoding.default_external = 'utf-8'
 
 class App < Sinatra::Base
 
+  locations = YAML.load_file('locations.yml')['locations']
+
   get '/' do
-    erb :index
+    erb :index, locals: { locations: locations }
   end
 
 end

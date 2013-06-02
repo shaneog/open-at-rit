@@ -37,14 +37,16 @@
   <div class="container">
 
     <!-- locations -->
-    <div class="row-fluid">
-      <%# locations.each do |location| %>
-        <div class="span4 well location open">
-          <div class="name">Global Market</div>
-          <p>11am to 6pm on weekdays</p>
-        </div>
-      <%# end %>
-    </div>
+    <% locations.each_slice(3) do |row_of_locations| %>
+      <div class="row-fluid">
+        <% row_of_locations.each do |location| %>
+          <div class="span4 well location open">
+            <div class="name"><%= location %></div>
+            <%#<p>hours go here</p>%>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
 
     <!-- footer -->
     <footer>
