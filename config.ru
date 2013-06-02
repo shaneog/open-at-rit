@@ -1,8 +1,7 @@
-# Set up app
-require './app'
+# This file is used by Rack-based servers to start the application.
 
 # Set up middleware
 use Rack::Deflater
 
-# Run app
-run App
+require ::File.expand_path('../config/environment',  __FILE__)
+run OpenAtRit::Application
