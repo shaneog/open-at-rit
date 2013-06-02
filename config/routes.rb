@@ -1,4 +1,6 @@
 OpenAtRit::Application.routes.draw do
+  root to: 'locations#index'
+
   resources :locations, only: :index
 
   # The priority is based upon order of creation:
