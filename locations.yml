@@ -1,21 +1,57 @@
 locations:
-  - Artesano Bakery & Café
-  - Beanz
-  - Ben & Jerry's
-  - Brick City Café
-  - Bytes
-  - Café & Market at Crossroads
-  - The College Grind
-  - The Commons
+  - Artesano Bakery & Café:
+    - weekday: 8 a.m. - 2 p.m.
+    - weekend: false
+  - Beanz:
+    - weekday: 8 a.m. - 3 p.m.
+    - weekend: false
+  - Ben & Jerry's:
+    - weekday: 11 a.m. - 2 p.m.
+    - weekend: false
+  - Brick City Café:
+    - weekday: 7 a.m. - 3 p.m.
+    - weekend: false
+  - Bytes:
+    - weekday: 10 a.m. - 3 p.m.
+    - weekend: false
+  - Café & Market at Crossroads:
+    - weekday: 8 a.m. - 2 p.m.
+    - weekend: false
+  - The College Grind:
+    - weekday: false
+    - weekend: false
+  - The Commons:
+    - weekday: 8 a.m. - 9:30 am, 11 a.m. - 1:30 p.m., 4:30 p.m. - 6:30 p.m.
+    - weekend: 11 a.m. - 1 p.m., 4:30 p.m. - 6 p.m.
   #- Commencement Concessions (Field House)
   #- Commencement Concessions (Simone Circle)
-  - The Corner Store
-  - Ctrl Alt Deli
-  - Freshens
-  - Global Village Cantina and Grille (Salsarita's, Oishii Sushi, Global Grille)
-  - Global Village Market
-  - Gracie's
-  - Midnight Oil
-  - Nathan's Soup & Salad
-  - RITZ Sports Zone
-  - Sol's Underground
+  - The Corner Store:
+    - weekday: 8 a.m. - 8 p.m.
+    - weekend: 11 a.m. - 7 p.m.
+  - Ctrl Alt Deli:
+    - weekday: 7:30 a.m. - 2 p.m.
+    - weekend: false
+  - Freshens:
+    - weekday: false
+    - weekend: false
+  - Global Village Cantina and Grille (Salsarita's, Oishii Sushi, Global Grille):
+    - weekday: 11 a.m. - 6 p.m.
+    - weekend: false
+  - Global Village Market:
+    - weekday: 11 a.m. - 6 p.m.
+    - weekend: false
+  - Gracie's:
+    - weekday: false
+    - weekend: false
+  - Midnight Oil:
+    - weekday: 7:30 a.m. - 2 p.m.
+    - weekend: false
+  - Nathan's Soup & Salad:
+    - weekday: 10 a.m. - 2 p.m.
+    - weekend: false
+  - RITZ Sports Zone:
+    - weekday: false
+    - weekend: false
+  - Sol's Underground:
+    - weekday: false
+    - weekend: false
