@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'yaml'
+require 'chronic'
 
 Encoding.default_external = 'utf-8'
 
