@@ -2,6 +2,12 @@ class Location < ActiveRecord::Base
 
   attr_accessible :name, :weekday_end, :weekday_start, :weekend_end, :weekend_start
 
+  default_scope order 'name ASC'
+
+  validates :name,
+    presence: true,
+    uniqueness: true
+
   def open? time=Time.now
     if is_weekday? time
       return false if weekday_hours.nil?
