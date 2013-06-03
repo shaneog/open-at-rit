@@ -4,8 +4,10 @@ class Location < ActiveRecord::Base
 
   def open? time=Time.now
     if is_weekday? time
+      return false if @weekday_hours.nil?
       @weekday_hours.cover? time
     else
+      return false if @weekend_hours.nil?
       @weekend_hours.cover? time
     end
   end
