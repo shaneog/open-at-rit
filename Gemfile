@@ -8,7 +8,13 @@ gem 'chronic', '~> 0.9'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3', '~> 1.3'
+# Database
+group :production do
+  gem 'pg', '~> 0.14'
+end
+group :development, :test do
+  gem 'sqlite3', '~> 1.3'
+end
 
 
 # Gems used only for assets and not required
