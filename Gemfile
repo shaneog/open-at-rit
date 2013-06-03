@@ -1,8 +1,10 @@
 source 'https://rubygems.org'
 
+# Important stuff
 gem 'rails', '~> 3.2'
 gem 'thin', '~> 1.5'
 
+# Time parsing
 gem 'chronic', '~> 0.9'
 
 # Bundle edge Rails instead:
@@ -16,7 +18,6 @@ group :development, :test do
   gem 'sqlite3', '~> 1.3'
 end
 
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -25,7 +26,3 @@ group :assets do
 end
 
 gem 'jquery-rails', '~> 2.1'
-
-
-
-
