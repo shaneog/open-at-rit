@@ -1,21 +1,18 @@
 <h1>Listing locations</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Weekday start</th>
-    <th>Weekday end</th>
-    <th>Weekend start</th>
-    <th>Weekend end</th>
-  </tr>
+<div class="container">
 
-<% @locations.each do |location| %>
-  <tr>
-    <td><%= location.name %></td>
-    <td><%= location.weekday_start %></td>
-    <td><%= location.weekday_end %></td>
-    <td><%= location.weekend_start %></td>
-    <td><%= location.weekend_end %></td>
-  </tr>
-<% end %>
-</table>
+  <!-- locations -->
+  <% @locations.each_slice(3) do |row_of_locations| %>
+    <div class="row-fluid">
+      <% row_of_locations.each do |location| %>
+        <div class="span4 well location open">
+          <div class="name"><%= location.name %></div>
+          <p>weekday hours: <%= location.weekday_start %> to %> location.weekday_end %></p>
+          <p>weekend hours: <%= location.weekend_start %> to %> location.weekend_end %></p>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+</div>
