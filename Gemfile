@@ -27,4 +27,8 @@ group :assets do
   gem 'uglifier', '~> 1.0'
 end
 
+group :test do
+  gem 'simplecov', '~> 0.7', require: false
+end
+
 gem 'jquery-rails', '~> 2.1'
