@@ -3,16 +3,21 @@
 <div class="container">
 
   <!-- locations -->
-  <% @locations.each_slice(3) do |row_of_locations| %>
-    <div class="row-fluid">
-      <% row_of_locations.each do |location| %>
-        <div class="span4 well location open">
-          <div class="name"><%= location.name %></div>
-          <p>weekday hours: <%= location.weekday_start %> to %> location.weekday_end %></p>
-          <p>weekend hours: <%= location.weekend_start %> to %> location.weekend_end %></p>
-        </div>
-      <% end %>
-    </div>
+  <% if @locations.length > 0 %>
+    <% @locations.each_slice(3) do |row_of_locations| %>
+      <div class="row-fluid">
+        <% row_of_locations.each do |location| %>
+          <div class="span4 well location open">
+            <div class="name"><%= location.name %></div>
+            <p>weekday hours: <%= location.weekday_start %> to %> location.weekday_end %></p>
+            <p>weekend hours: <%= location.weekend_start %> to %> location.weekend_end %></p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    <h3>No locations found....</h3>
+    <h3>This is probably a bug, please <a href="https://github.com/thenickperson/open-at-rit/issues/new" target="_blank">report an issue</a>.</h3>
   <% end %>
 
 </div>
