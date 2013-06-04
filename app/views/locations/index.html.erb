@@ -2,10 +2,10 @@
 
   <!-- locations -->
   <% if @locations.length > 0 %>
-    <% @locations.each_slice(3) do |row_of_locations| %>
+    <% @locations.each_slice(4) do |row_of_locations| %>
       <div class="row-fluid">
         <% row_of_locations.each do |location| %>
-          <div class="span4 well location <%= location.open? ? "open" : "closed" %>">
+          <div class="span3 well location <%= location.open? ? "open" : "closed" %>">
             <div class="name">
               <% if location.explanation %>
                 <abbr title="<%= location.explanation %>"><%= location.name %></abbr>
