@@ -32,18 +32,18 @@ class Location < ActiveRecord::Base
     name <=> other_location.name
   end
 
-  private
-
-  def is_weekday? time
-    not (time.saturday? || time.sunday?)
-  end
-
   def open_weekdays?
     not (weekday_start.nil? || weekday_end.nil?)
   end
 
   def open_weekends?
     not (weekend_start.nil? || weekend_end.nil?)
+  end
+
+  private
+
+  def is_weekday? time
+    not (time.saturday? || time.sunday?)
   end
 
 end
