@@ -45,7 +45,8 @@
 -
   name: Freshens
 -
-  name: Global Village Cantina and Grille (Salsarita's, Oishii Sushi, Global Grille)
+  name: Global Village Cantina and Grille
+  explanation: Salsarita's, Oishii Sushi, and Global Grille
   weekday_start: 11 a.m.
   weekend_end: 6 p.m.
 -
