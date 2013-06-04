@@ -7,22 +7,8 @@
         <% row_of_locations.each do |location| %>
           <div class="span4 well location <%= location.open? ? "open" : "closed" %>">
             <div class="name"><%= location.name %></div>
-            <p>
-              weekday hours:
-              <% if location.weekday_start and location.weekday_end %>
-                <%= location.weekday_start %> to <%= location.weekday_end %>
-              <% else %>
-                closed
-              <% end %>
-            </p>
-            <p>
-              weekend hours:
-              <% if location.weekend_start and location.weekend_end %>
-                <%= location.weekend_start %> to <%= location.weekend_end %>
-              <% else %>
-                closed
-              <% end %>
-            </p>
+            <p>weekday hours: <%= location.weekday_hours %></p>
+            <p>weekend hours: <%= location.weekend_hours %></p>
           </div>
         <% end %>
       </div>
