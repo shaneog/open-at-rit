@@ -15,7 +15,7 @@ p locations = YAML.load_file("#{Rails.root}/lib/locations.yml")
 locations.each do |location|
   Location.create!({
     name: location['name'],
-    explanation: location['explanation']
+    explanation: location['explanation'],
     weekday_start: Chronic.parse(location['weekday_start']),
     weekday_end: Chronic.parse(location['weekday_end']),
     weekend_start: Chronic.parse(location['weekend_start']),
