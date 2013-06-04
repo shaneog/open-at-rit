@@ -6,7 +6,13 @@
       <div class="row-fluid">
         <% row_of_locations.each do |location| %>
           <div class="span4 well location <%= location.open? ? "open" : "closed" %>">
-            <div class="name"><%= location.name %></div>
+            <div class="name">
+              <% if location.explanation %>
+                <abbr title="<%= location.explanation %>"><%= location.name %></abbr>
+              <% else %>
+                <%= location.name %>
+              <% end %>
+            </div>
             <p>
               <strong>weekdays</strong>:
               <span class="<%= location.open_weekdays? ? 'text-success' : 'text-error' %>"><%= location.weekday_hours %></span>
