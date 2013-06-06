@@ -1,2 +1,1 @@
-open-at-rit
-===========
+# [Open at RIT](http://open-at-rit.herokuapp.com) [![Build Status](https://secure.travis-ci.org/thenickperson/open-at-rit.png?branch=master)](http://travis-ci.org/thenickperson/open-at-rit) [![Dependency Status](https://gemnasium.com/thenickperson/open-at-rit.png)](https://gemnasium.com/thenickperson/open-at-rit) [![Code Climate](https://codeclimate.com/github/thenickperson/open-at-rit.png)](https://codeclimate.com/github/thenickperson/open-at-rit)
