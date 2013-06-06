@@ -10,4 +10,10 @@ class LocationsController < ApplicationController
     respond_with @locations
   end
 
+  private
+
+  def location_params
+    params.require(:episode).permit(:name, :explanation, :weekday_end, :weekday_start, :weekend_end, :weekend_start)
+  end
+
 end

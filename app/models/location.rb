@@ -1,7 +1,5 @@
 class Location < ActiveRecord::Base
 
-  attr_accessible :name, :explanation, :weekday_end, :weekday_start, :weekend_end, :weekend_start
-
   default_scope order 'name ASC'
 
   validates :name,
