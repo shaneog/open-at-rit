@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.0.0'
+
 # Important stuff
 gem 'rails', github: 'rails/rails'
 gem 'thin', '~> 1.5'
