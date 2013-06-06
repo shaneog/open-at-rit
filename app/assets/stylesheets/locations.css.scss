@@ -1,3 +1,79 @@
 // Place all the styles related to the Locations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  padding-top: 75px;
+  background-color: rgb(221, 228, 230);
+}
+
+footer {
+  text-align: center;
+}
+
+.brand-rit {
+  font-family: Georgia, serif;
+  color: rgb(243, 110, 33);
+}
+
+.brand:hover .brand-rit {
+  color: rgb(29, 210, 175);
+}
+
+.location {
+  text-align: center;
+  background: white;
+  padding: 0;
+}
+
+.name {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 42px;
+  padding: 10px;
+  border-radius: 6px 6px 0 0;
+  margin-bottom: 10px;
+}
+
+.open .name {
+  color: white;
+  background-color: rgb(29, 204, 170);
+}
+
+.closed .name {
+  color: white;
+  background-color: rgb(233, 93, 78);
+}
+
+/*
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a {
+  color: #000;
+  &:visited {
+    color: #666;
+  }
+  &:hover {
+    color: #fff;
+    background-color: #000;
+  }
+}
+*/
