@@ -11,9 +11,9 @@ gem 'chronic', '~> 0.9'
 group :production do
   gem 'pg', '~> 0.14'
 end
-#group :development, :test do
+group :development, :test do
   gem 'sqlite3', '~> 1.3'
-#end
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
