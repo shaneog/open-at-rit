@@ -2,7 +2,7 @@
 
   <!-- locations -->
   <% if @locations.length > 0 %>
-    <% @locations.each_slice(4) do |locations| %>
+    <% @locations.each_slice LocationsHelper::LOCATIONS_PER_ROW do |locations| %>
       <div class="row-fluid">
         <%= render locations %>
       </div>

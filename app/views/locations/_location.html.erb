@@ -1,4 +1,4 @@
-          <div class="span3 well location <%= location.open? ? "open" : "closed" %>">
+          <div class="span<%= LocationsHelper::LOCATION_WIDTH %> well location <%= location.open? ? 'open' : 'closed' %>">
             <div class="name">
               <% if location.explanation %>
                 <abbr title="<%= location.explanation %>"><%= location.name %></abbr>
