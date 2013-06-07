@@ -6,12 +6,14 @@
                 <%= location.name %>
               <% end %>
             </div>
-            <p>
-              <strong>weekdays</strong>:
-              <span class="<%= location.open_weekdays? ? 'text-success' : 'text-error' %>"><%= location.weekday_hours %></span>
-            </p>
-            <p>
-              <strong>weekends</strong>:
-              <span class="<%= location.open_weekends? ? 'text-success' : 'text-error' %>"><%= location.weekend_hours %></span>
-            </p>
+            <div class="info">
+              <p>
+                <strong>weekdays</strong>:
+                <span class="<%= location.open_weekdays? ? 'text-success' : 'text-error' %>"><%= location.weekday_hours %></span>
+              </p>
+              <p>
+                <strong>weekends</strong>:
+                <span class="<%= location.open_weekends? ? 'text-success' : 'text-error' %>"><%= location.weekend_hours %></span>
+              </p>
+            </div>
           </div>

@@ -33,6 +33,7 @@ footer {
   padding: 10px;
   border-radius: 6px 6px 0 0;
   margin-bottom: 10px;
+  height: 50%;
 }
 
 .open .name {
@@ -43,4 +44,8 @@ footer {
 .closed .name {
   color: white;
   background-color: rgb(233, 93, 78);
+}
+
+.info {
+  height: 50%;
 }
