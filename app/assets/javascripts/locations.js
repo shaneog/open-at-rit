@@ -2,10 +2,21 @@
 // All this logic will automatically be available in application.js.
 
 var Locations = {
+
   syncHeights: function () {
     console.log("syncing heights...");
-    $('.location').css('height', $('.location').height());
+    var maxHeight = Locations.getMaxHeight();
+    $('.location').css('height', maxHeight);
+  },
+
+  getMaxHeight: function () {
+    var heights = $(".location").map(function () {
+      return $(this).height();
+    }).get();
+
+    return Math.max.apply(null, heights);
   }
+
 };
 
 $(function () {
