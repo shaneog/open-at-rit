@@ -1,15 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  name: MyString
-  weekday_start: 2013-06-02 19:27:24
-  weekday_end: 2013-06-02 19:27:24
-  weekend_start: 2013-06-02 19:27:24
-  weekend_end: 2013-06-02 19:27:24
-
-two:
-  name: MyString
-  weekday_start: 2013-06-02 19:27:24
-  weekday_end: 2013-06-02 19:27:24
-  weekend_start: 2013-06-02 19:27:24
-  weekend_end: 2013-06-02 19:27:24
+corner_store:
+  name: The Corner Store
+  weekday_start: 2000-01-01 8:00:00
+  weekday_end:   2000-01-01 2:00:00
+  weekend_start: 2000-01-01 10:30:00
+  weekend_end:   2000-01-01 2:00:00
