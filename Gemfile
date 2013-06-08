@@ -2,8 +2,8 @@ source 'https://rubygems.org'
 
 ruby '2.0.0'
 
-gem 'rails',     github: 'rails/rails'
-gem 'arel',      github: 'rails/arel'
+gem 'rails', '~> 4.0.0.rc1', github: 'rails/rails', branch: '4-0-stable'
+gem 'arel', github: 'rails/arel'
 
 # Use thin as the server
 gem 'thin', '~> 1.5'
