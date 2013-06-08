@@ -46,14 +46,14 @@ class LocationTest < ActiveSupport::TestCase
   end
 
   test 'should know if a certain time is a weekday' do
-    assert @corner_store.is_weekday?(Chronic.parse 'Monday')
-    assert @corner_store.is_weekday?(Chronic.parse 'Tuesday')
-    assert @corner_store.is_weekday?(Chronic.parse 'Wednesday')
-    assert @corner_store.is_weekday?(Chronic.parse 'Thurdsday')
-    assert @corner_store.is_weekday?(Chronic.parse 'Friday')
+    assert Location.is_weekday?(Chronic.parse 'Monday')
+    assert Location.is_weekday?(Chronic.parse 'Tuesday')
+    assert Location.is_weekday?(Chronic.parse 'Wednesday')
+    assert Location.is_weekday?(Chronic.parse 'Thursday')
+    assert Location.is_weekday?(Chronic.parse 'Friday')
 
-    assert !@corner_store.is_weekday?(Chronic.parse 'Saturday')
-    assert !@corner_store.is_weekday?(Chronic.parse 'Sunday')
+    assert !Location.is_weekday?(Chronic.parse 'Saturday')
+    assert !Location.is_weekday?(Chronic.parse 'Sunday')
   end
 
 end

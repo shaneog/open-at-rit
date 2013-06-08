@@ -9,7 +9,7 @@ class Location < ActiveRecord::Base
   TIME_FORMAT = '%l:%M %P'
 
   def open? time=Time.now
-    if is_weekday? time
+    if Location.is_weekday? time
       return false unless open_weekdays?
       (weekday_start..weekday_end).cover? time
     else
@@ -40,7 +40,7 @@ class Location < ActiveRecord::Base
 
   private
 
-  def is_weekday? time
+  def self.is_weekday? time
     not (time.saturday? || time.sunday?)
   end
 
