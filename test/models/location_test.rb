@@ -14,13 +14,13 @@ class LocationTest < ActiveSupport::TestCase
   #test 'should validate its name'
 
   test 'should know if it is open at a certain time' do
-    assert @corner_store.open?(Chronic.parse '8 am on Monday')
-    assert @corner_store.open?(Chronic.parse '12 pm on Monday')
-    assert !@corner_store.open?(Chronic.parse '2 am on Tuesday')
+    assert(@corner_store.open?(Chronic.parse '8 am on Monday'),   'it should be open')
+    assert(@corner_store.open?(Chronic.parse '12 pm on Monday'),  'it should be open')
+    assert(!@corner_store.open?(Chronic.parse '2 am on Tuesday'), 'it should be closed')
 
-    assert @corner_store.open?(Chronic.parse '10:30 am on Saturday')
-    assert @corner_store.open?(Chronic.parse '12 pm on Saturday')
-    assert !@corner_store.open?(Chronic.parse '2 am on Sunday')
+    assert(@corner_store.open?(Chronic.parse '10:30 am on Saturday'), 'it should be open')
+    assert(@corner_store.open?(Chronic.parse '12 pm on Saturday'),    'it should be open')
+    assert(!@corner_store.open?(Chronic.parse '2 am on Sunday'),      'it should be closed')
   end
 
   test 'should get its hours during the week' do
@@ -38,22 +38,22 @@ class LocationTest < ActiveSupport::TestCase
   end
 
   test 'should know if it is open during the week' do
-    assert @corner_store.open_weekdays?
+    assert @corner_store.open_weekdays?, 'it should be open'
   end
 
   test 'should know if it is open during the weekend' do
-    assert @corner_store.open_weekdays?
+    assert @corner_store.open_weekdays?, 'it should be open'
   end
 
   test 'should know if a certain time is a weekday' do
-    assert Location.is_weekday?(Chronic.parse 'Monday')
-    assert Location.is_weekday?(Chronic.parse 'Tuesday')
-    assert Location.is_weekday?(Chronic.parse 'Wednesday')
-    assert Location.is_weekday?(Chronic.parse 'Thursday')
-    assert Location.is_weekday?(Chronic.parse 'Friday')
+    assert Location.is_weekday?(Chronic.parse 'Monday'),    'it should be a weekday'
+    assert Location.is_weekday?(Chronic.parse 'Tuesday'),   'it should be a weekday'
+    assert Location.is_weekday?(Chronic.parse 'Wednesday'), 'it should be a weekday'
+    assert Location.is_weekday?(Chronic.parse 'Thursday'),  'it should be a weekday'
+    assert Location.is_weekday?(Chronic.parse 'Friday'),    'it should be a weekday'
 
-    assert !Location.is_weekday?(Chronic.parse 'Saturday')
-    assert !Location.is_weekday?(Chronic.parse 'Sunday')
+    assert !Location.is_weekday?(Chronic.parse 'Saturday'), 'it should not be a weekday'
+    assert !Location.is_weekday?(Chronic.parse 'Sunday'),   'it should not be a weekday'
   end
 
 end
