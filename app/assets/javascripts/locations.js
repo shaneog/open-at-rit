@@ -3,10 +3,12 @@
 
 var Locations = {
   syncHeights: function () {
+    console.log("syncing heights...");
     $('.location').css('height', $('.location').height());
   }
 };
 
 $(function () {
   Locations.syncHeights();
+  $(window).resize(Locations.syncHeights);
 });
