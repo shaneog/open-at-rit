@@ -23,3 +23,26 @@ Technology](https://www.rit.edu).
 - a scraper that automatically updates the app's database with information from
   RIT's website
 - a simple JSON API
+
+## Installation
+1. Install and use Ruby 2.0. Make sure you have the bundler gem. It will
+   install Rails 4 for you.
+2. `git clone https://github.com/thenickperson/open-at-rit.git`
+3. `cd open-at-rit`
+4. `bundle install`
+5. `rake db:setup`
+6. `rails server`
+
+## Technology Stack
+- Ruby 2
+- Rails 4 (currently edge, in development)
+- JavaScript
+- SASS
+- Heroku (for production)
+
+## Updating Hours
+This app currently uses the `lib/locations.yml` file to store information on
+locations and their hours. This data file must be updated manually. `rake
+db:seed` will use this file to generate the database of locations from this
+file. After that, the database should not need to be modified unless hours
+or locations need to be updated.
