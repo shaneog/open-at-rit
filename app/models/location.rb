@@ -26,10 +26,6 @@ class Location < ActiveRecord::Base
     open_weekends? ? "#{weekend_start.strftime(TIME_FORMAT).strip} to #{weekend_end.strftime(TIME_FORMAT).strip}" : 'closed'
   end
 
-  def <=> other_location
-    name <=> other_location.name
-  end
-
   def open_weekdays?
     not (weekday_start.nil? || weekday_end.nil?)
   end

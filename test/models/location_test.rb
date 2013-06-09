@@ -31,12 +31,6 @@ class LocationTest < ActiveSupport::TestCase
     assert_equal @corner_store.weekend_hours, '10:30 am to 2:00 am'
   end
 
-  test 'should compare itself (by name) with another location' do
-    assert_equal self <=> Location.new(name: 'a'), -1
-    assert_equal self <=> Location.new(name: 'The Corner Store'), 0
-    assert_equal self <=> Location.new(name: 'z'), 1
-  end
-
   test 'should know if it is open during the week' do
     assert @corner_store.open_weekdays?, 'it should be open'
   end
