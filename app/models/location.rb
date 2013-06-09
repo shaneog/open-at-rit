@@ -1,6 +1,6 @@
 class Location < ActiveRecord::Base
 
-  default_scope order 'name ASC'
+  default_scope { order 'name ASC' }
 
   validates :name,
     presence: true,
