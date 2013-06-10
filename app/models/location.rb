@@ -19,9 +19,11 @@ class Location < ActiveRecord::Base
     # are saved
     if Location.is_weekday? time
       return false unless open_weekdays?
+      logger.debug "Checking to see if #{time} is between #{weekday_start} and #{weekday_end}."
       (weekday_start..(weekday_start < weekday_end ? weekday_end : weekday_end + 1.day)).cover? time
     else
       return false unless open_weekends?
+      logger.debug "Checking to see if #{time} is between #{weekend_start} and #{weekend_end}."
       (weekend_start..(weekend_start < weekend_end ? weekend_end : weekend_end + 1.day)).cover? time
     end
   end
