@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 20130608235028) do
     t.integer  "weekday_end"
     t.integer  "weekend_start"
     t.integer  "weekend_end"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "explanation"
   end
 
