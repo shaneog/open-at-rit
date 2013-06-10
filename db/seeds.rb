@@ -10,7 +10,7 @@ require 'open-uri'
 
 require File.dirname(__FILE__) + '/../config/environment.rb'
 
-p locations = YAML.load_file("#{Rails.root}/lib/locations.yml")
+locations = YAML.load_file("#{Rails.root}/lib/locations.yml")
 
 locations.each do |location|
   Location.create!({
