@@ -51,7 +51,6 @@ end
 
 group :test do
   gem 'simplecov', '~> 0.7', require: false
-  gem 'zonebie'
 end
 
 group :development do
