@@ -8,4 +8,22 @@ module LocationsHelper
   # if necessary.
   LOCATION_WIDTH = 12 / LOCATIONS_PER_ROW
 
+  TIME_FORMAT = '%l:%M %P'
+
+  def weekday_hours_for location
+    return 'closed' unless location.open_weekdays?
+
+    start_time = location.weekday_start.localtime.strftime(TIME_FORMAT).strip
+    end_time = location.weekday_end.localtime.strftime(TIME_FORMAT).strip
+    "#{start_time} to #{end_time}"
+  end
+
+  def weekend_hours_for location
+    return 'closed' unless location.open_weekends?
+
+    start_time = location.weekend_start.localtime.strftime(TIME_FORMAT).strip
+    end_time = location.weekend_end.localtime.strftime(TIME_FORMAT).strip
+    "#{start_time} to #{end_time}"
+  end
+
 end

@@ -6,8 +6,6 @@ class Location < ActiveRecord::Base
     presence: true,
     uniqueness: true
 
-  TIME_FORMAT = '%l:%M %P'
-
   def open? time=Time.now
     # Set the time's date back to January 1, 2000 so we can do accurate
     # comparisons with it
@@ -26,22 +24,6 @@ class Location < ActiveRecord::Base
       logger.debug "Checking to see if #{time} is between #{weekend_start} and #{weekend_end}."
       (weekend_start..(weekend_start < weekend_end ? weekend_end : weekend_end + 1.day)).cover? time
     end
-  end
-
-  def weekday_hours
-    return 'closed' unless open_weekdays?
-
-    start_time = weekday_start.localtime.strftime(TIME_FORMAT).strip
-    end_time = weekday_end.localtime.strftime(TIME_FORMAT).strip
-    "#{start_time} to #{end_time}"
-  end
-
-  def weekend_hours
-    return 'closed' unless open_weekends?
-
-    start_time = weekend_start.localtime.strftime(TIME_FORMAT).strip
-    end_time = weekend_end.localtime.strftime(TIME_FORMAT).strip
-    "#{start_time} to #{end_time}"
   end
 
   def open_weekdays?
