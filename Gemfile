@@ -23,7 +23,7 @@ gem 'sprockets-rails', github: 'rails/sprockets-rails'
 gem 'sass-rails', github: 'rails/sass-rails'
 
 # Use Bootstrap and Bootswatch for styles and scripts
-gem 'bootstrap-sass', '~> 2.3.1.3'
+gem 'bootstrap-sass', '~> 2.3.2.0'
 gem 'bootswatch-rails', '~> 0.5'
 
 # Use Uglifier as compressor for JavaScript assets
