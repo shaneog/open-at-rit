@@ -24,11 +24,11 @@ class LocationTest < ActiveSupport::TestCase
   end
 
   test 'should get its hours during the week' do
-    assert_equal @corner_store.weekday_hours, '8:00 am to 2:00 am'
+    assert_equal '8:00 am to 2:00 am', @corner_store.weekday_hours
   end
 
   test 'should get its hours during the weekend' do
-    assert_equal @corner_store.weekend_hours, '10:30 am to 2:00 am'
+    assert_equal '10:30 am to 2:00 am', @corner_store.weekend_hours
   end
 
   test 'should know if it is open during the week' do
