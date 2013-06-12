@@ -36,7 +36,7 @@ class LocationTest < ActiveSupport::TestCase
   end
 
   test 'should know if it is open during the weekend' do
-    assert @corner_store.open_weekdays?, 'it should be open'
+    assert @corner_store.open_weekends?, 'it should be open'
   end
 
   test 'should know if a certain time is a weekday' do
