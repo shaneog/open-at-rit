@@ -4,8 +4,6 @@ OpenAtRit::Application.routes.draw do
 
   root to: 'locations#index'
 
-  resources :locations, only: :index
-
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
