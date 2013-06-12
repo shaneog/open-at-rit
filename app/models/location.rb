@@ -29,11 +29,19 @@ class Location < ActiveRecord::Base
   end
 
   def weekday_hours
-    open_weekdays? ? "#{weekday_start.localtime.strftime(TIME_FORMAT).strip} to #{weekday_end.localtime.strftime(TIME_FORMAT).strip}" : 'closed'
+    return 'closed' unless open_weekdays?
+
+    start_time = weekday_start.localtime.strftime(TIME_FORMAT).strip
+    end_time = weekday_end.localtime.strftime(TIME_FORMAT).strip
+    "#{start_time} to #{end_time}"
   end
 
   def weekend_hours
-    open_weekends? ? "#{weekend_start.localtime.strftime(TIME_FORMAT).strip} to #{weekend_end.localtime.strftime(TIME_FORMAT).strip}" : 'closed'
+    return 'closed' unless open_weekends?
+
+    start_time = weekend_start.localtime.strftime(TIME_FORMAT).strip
+    end_time = weekend_end.localtime.strftime(TIME_FORMAT).strip
+    "#{start_time} to #{end_time}"
   end
 
   def open_weekdays?
