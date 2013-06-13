@@ -16,22 +16,24 @@ class Location < ActiveRecord::Base
     # TODO: Don't add a day to the end Times on the fly, do it when the models
     # are saved
     if Location.is_weekday? time
-      return false unless open_weekdays?
+      return false unless open_on? :weekdays
       logger.debug "Checking to see if #{time} is between #{weekday_start} and #{weekday_end}."
       (weekday_start..(weekday_start < weekday_end ? weekday_end : weekday_end + 1.day)).cover? time
     else
-      return false unless open_weekends?
+      return false unless open_on? :weekends
       logger.debug "Checking to see if #{time} is between #{weekend_start} and #{weekend_end}."
       (weekend_start..(weekend_start < weekend_end ? weekend_end : weekend_end + 1.day)).cover? time
     end
   end
 
-  def open_weekdays?
-    not (weekday_start.nil? || weekday_end.nil?)
-  end
-
-  def open_weekends?
-    not (weekend_start.nil? || weekend_end.nil?)
+  def open_on? part_of_week
+    if part_of_week == :weekdays
+      not (weekday_start.nil? || weekday_end.nil?)
+    elsif part_of_week == :weekends
+      not (weekend_start.nil? || weekend_end.nil?)
+    else
+      raise ArgumentError
+    end
   end
 
   private

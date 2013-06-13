@@ -23,12 +23,10 @@ class LocationTest < ActiveSupport::TestCase
     assert(!@corner_store.open?(Chronic.parse '2 am on Sunday'),      'it should be closed')
   end
 
-  test 'should know if it is open during the week' do
-    assert @corner_store.open_weekdays?, 'it should be open'
-  end
-
-  test 'should know if it is open during the weekend' do
-    assert @corner_store.open_weekends?, 'it should be open'
+  test 'should know if it is open during the week and weekend' do
+    assert @corner_store.open_on?(:weekdays), 'it should be open'
+    assert @corner_store.open_on?(:weekends), 'it should be open'
+    assert_raise ArgumentError do @corner_store.open_on?(:the_moon) end
   end
 
   test 'should know if a certain time is a weekday' do

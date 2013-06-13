@@ -9,11 +9,11 @@
   <div class="info">
     <p>
       <strong>weekdays</strong>:
-      <span class="<%= location.open_weekdays? ? 'text-success' : 'text-error' %>"><%= weekday_hours_for location %></span>
+      <span class="<%= location.open_on?(:weekdays) ? 'text-success' : 'text-error' %>"><%= weekday_hours_for location %></span>
     </p>
     <p>
       <strong>weekends</strong>:
-      <span class="<%= location.open_weekends? ? 'text-success' : 'text-error' %>"><%= weekend_hours_for location %></span>
+      <span class="<%= location.open_on?(:weekends) ? 'text-success' : 'text-error' %>"><%= weekend_hours_for location %></span>
     </p>
   </div>
 </div>

@@ -11,7 +11,7 @@ module LocationsHelper
   TIME_FORMAT = '%l:%M %P'
 
   def weekday_hours_for location
-    return 'closed' unless location.open_weekdays?
+    return 'closed' unless location.open_on? :weekdays
 
     start_time = location.weekday_start.localtime.strftime(TIME_FORMAT).strip
     end_time = location.weekday_end.localtime.strftime(TIME_FORMAT).strip
@@ -19,7 +19,7 @@ module LocationsHelper
   end
 
   def weekend_hours_for location
-    return 'closed' unless location.open_weekends?
+    return 'closed' unless location.open_on? :weekends
 
     start_time = location.weekend_start.localtime.strftime(TIME_FORMAT).strip
     end_time = location.weekend_end.localtime.strftime(TIME_FORMAT).strip
