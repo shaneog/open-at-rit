@@ -14,12 +14,10 @@ class LocationsHelperTest < ActionView::TestCase
     assert_equal 3, LocationsHelper::LOCATION_WIDTH
   end
 
-  test 'should get a location\'s hours during the week' do
-    assert_equal '8:00 am to 2:00 am', weekday_hours_for(@corner_store)
-  end
-
-  test 'should get a location\'s hours during the weekend' do
-    assert_equal '10:30 am to 2:00 am', weekend_hours_for(@corner_store)
+  test 'should get a location\'s hours during the week and weekend' do
+    assert_equal '8:00 am to 2:00 am', hours_for(@corner_store, :weekdays)
+    assert_equal '10:30 am to 2:00 am', hours_for(@corner_store, :weekends)
+    assert_raise ArgumentError do hours_for(@corner_store, :something_else) end
   end
 
 end
