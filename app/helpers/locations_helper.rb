@@ -10,6 +10,7 @@ module LocationsHelper
 
   TIME_FORMAT = '%l:%M %P'
 
+  # TODO refactor
   def hours_for location, part_of_week
     return 'closed' unless location.open_on? part_of_week
 

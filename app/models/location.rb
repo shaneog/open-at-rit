@@ -2,10 +2,12 @@ class Location < ActiveRecord::Base
 
   default_scope { order 'name ASC' }
 
+  # TODO test validations
   validates :name,
     presence: true,
     uniqueness: true
 
+  # TODO refactor
   def open? time=Time.now
     # Set the time's date back to January 1, 2000 so we can do accurate
     # comparisons with it
@@ -32,6 +34,7 @@ class Location < ActiveRecord::Base
     (start_time..(start_time < end_time ? end_time : end_time + 1.day)).cover? time
   end
 
+  # TODO refactor
   def open_on? part_of_week
     if part_of_week == :weekdays
       not (weekday_start.nil? || weekday_end.nil?)
@@ -44,6 +47,7 @@ class Location < ActiveRecord::Base
 
   private
 
+  # TODO refactor
   def self.is_weekday? time
     not (time.saturday? || time.sunday?)
   end
