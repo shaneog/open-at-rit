@@ -7,7 +7,14 @@ class LocationTest < ActiveSupport::TestCase
     @corner_store = locations :corner_store
   end
 
-  #test 'should have accessible attributes'
+  test 'should be initialized properly' do
+    assert_equal 'The Corner Store', @corner_store.name
+    assert_equal Time.utc(2000, 1, 1, 13, 0,  0), @corner_store.weekday_start
+    assert_equal Time.utc(2000, 1, 2, 7,  0,  0), @corner_store.weekday_end
+    assert_equal Time.utc(2000, 1, 1, 15, 30, 0), @corner_store.weekend_start
+    assert_equal Time.utc(2000, 1, 2, 7,  0,  0), @corner_store.weekend_end
+    assert_nil @corner_store.explanation
+  end
 
   #test 'should be sorted by name'
 
