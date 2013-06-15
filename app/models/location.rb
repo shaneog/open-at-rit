@@ -16,7 +16,7 @@ class Location < ActiveRecord::Base
   def open? time=Time.now
     # Set the time's date back to January 1, 2000 so we can do accurate
     # comparisons with it
-    time = Time.mktime(2000, 1, 1, time.hour, time.min)
+    Location.reset_date time
 
     # Figure out if the time is between the hours for the appropriate part of
     # the week
@@ -49,6 +49,10 @@ class Location < ActiveRecord::Base
   end
 
   private
+
+  def self.reset_date time
+    time.change year: 2000, month: 1, day: 1
+  end
 
   # TODO refactor
   def self.is_weekday? time
