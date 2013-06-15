@@ -20,8 +20,6 @@ class Location < ActiveRecord::Base
 
     # Figure out if the time is between the hours for the appropriate part of
     # the week
-    # TODO: Don't add a day to the end Times on the fly, do it when the models
-    # are saved
     part_of_week = Location.is_weekday?(time) ? :weekdays : :weekends
     return false unless open_on? part_of_week
 
