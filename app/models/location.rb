@@ -7,6 +7,11 @@ class Location < ActiveRecord::Base
     presence: true,
     uniqueness: true
 
+  before_save do
+    self.weekday_end += 1.day if weekday_start < weekday_end
+    self.weekend_end += 1.day if weekend_start < weekend_end
+  end
+
   # TODO refactor
   def open? time=Time.now
     # Set the time's date back to January 1, 2000 so we can do accurate
@@ -31,7 +36,7 @@ class Location < ActiveRecord::Base
     end
 
     logger.debug "Checking to see if #{time} is between #{start_time} and #{end_time}."
-    (start_time..(start_time < end_time ? end_time : end_time + 1.day)).cover? time
+    (start_time..end_time).cover? time
   end
 
   # TODO refactor
