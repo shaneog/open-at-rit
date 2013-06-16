@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.0.0'
 
+# Use Rails 4
 gem 'rails', '~> 4.0.0.rc1', github: 'rails/rails', branch: '4-0-stable'
 gem 'arel', github: 'rails/arel'
 
@@ -55,7 +56,8 @@ end
 
 group :development do
   gem 'binding_of_caller', '~> 0.6'
-  gem 'better_errors', '~> 0.3'
+  gem 'better_errors', '~> 0.9'
+  gem 'foreman'
 end
 
 # Time parsing
