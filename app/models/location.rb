@@ -7,7 +7,13 @@ class Location < ActiveRecord::Base
     presence: true,
     uniqueness: true
 
+  # TODO refactor
   before_save do
+    Location.reset_date weekday_start
+    Location.reset_date weekday_end
+    Location.reset_date weekend_start
+    Location.reset_date weekend_end
+
     self.weekday_end += 1.day if weekday_end < weekday_start
     self.weekend_end += 1.day if weekend_end < weekend_start
   end
