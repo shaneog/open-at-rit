@@ -22,11 +22,6 @@ class Location < ActiveRecord::Base
   #
   # TODO refactor
   before_save do
-    Location.reset_date weekday_start
-    Location.reset_date weekday_end
-    Location.reset_date weekend_start
-    Location.reset_date weekend_end
-
     if weekday_start && weekday_end
       self.weekday_end += 1.day if weekday_end < weekday_start
     end
