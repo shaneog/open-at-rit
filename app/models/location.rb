@@ -20,14 +20,14 @@ class Location < ActiveRecord::Base
 
   # TODO refactor
   def open? time=Time.now
-    # Set the time's date back to January 1, 2000 so we can do accurate
-    # comparisons with it
-    Location.reset_date time
-
     # Figure out if the time is between the hours for the appropriate part of
     # the week
     part_of_week = Location.is_weekday?(time) ? :weekdays : :weekends
     return false unless open_on? part_of_week
+
+    # Set the time's date back to January 1, 2000 so we can do accurate
+    # comparisons with it
+    time = Location.reset_date time
 
     if part_of_week == :weekdays
       start_time = weekday_start
