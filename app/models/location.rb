@@ -28,8 +28,12 @@ class Location < ActiveRecord::Base
     Location.reset_date weekend_start
     Location.reset_date weekend_end
 
-    self.weekday_end += 1.day if weekday_end < weekday_start
-    self.weekend_end += 1.day if weekend_end < weekend_start
+    if weekday_start && weekday_end
+      self.weekday_end += 1.day if weekday_end < weekday_start
+    end
+    if weekend_start && weekend_end
+      self.weekend_end += 1.day if weekend_end < weekend_start
+    end
   end
 
   # Returns true if the Location is open at the given Time. This is likely the
@@ -95,7 +99,9 @@ class Location < ActiveRecord::Base
   # @param [Time] time the original Time, which is used to create the new Time
   #
   # @return [Time] a copy of the original Time with its date reset to 2000/1/1
+  # (returns nil if the given time was nil)
   def self.reset_date time
+    return nil if time.nil?
     time.change year: 2000, month: 1, day: 1
   end
 
