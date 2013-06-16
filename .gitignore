@@ -19,5 +19,5 @@
 /coverage
 
 # Ignore generated documentation.
-/doc
+/doc/app
 .yardoc
