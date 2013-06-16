@@ -1,6 +1,8 @@
 # [Open at RIT](http://openatrit.herokuapp.com) [![Build Status](https://secure.travis-ci.org/thenickperson/open-at-rit.png?branch=master)](http://travis-ci.org/thenickperson/open-at-rit) [![Dependency Status](https://gemnasium.com/thenickperson/open-at-rit.png)](https://gemnasium.com/thenickperson/open-at-rit) [![Code Climate](https://codeclimate.com/github/thenickperson/open-at-rit.png)](https://codeclimate.com/github/thenickperson/open-at-rit)
 
-## Status: unstable and in development
+## Project Status
+__Unstable and in development.__
+
 Please do not rely on it yet, as locations are currently always displayed as
 closed (which is innacurate). This should be fixed soon.
 

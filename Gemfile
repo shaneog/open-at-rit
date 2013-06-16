@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.0.0'
 
+# Use Rails 4
 gem 'rails', '~> 4.0.0.rc1', github: 'rails/rails', branch: '4-0-stable'
 gem 'arel', github: 'rails/arel'
 
@@ -23,7 +24,7 @@ gem 'sprockets-rails', github: 'rails/sprockets-rails'
 gem 'sass-rails', github: 'rails/sass-rails'
 
 # Use Bootstrap and Bootswatch for styles and scripts
-gem 'bootstrap-sass', '~> 2.3.1.3'
+gem 'bootstrap-sass', '~> 2.3.2.0'
 gem 'bootswatch-rails', '~> 0.5'
 
 # Use Uglifier as compressor for JavaScript assets
@@ -44,6 +45,8 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.4.2'
 
+gem 'yard', '~> 0.8.5.2'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -51,12 +54,14 @@ end
 
 group :test do
   gem 'simplecov', '~> 0.7', require: false
-  gem 'zonebie'
 end
 
 group :development do
   gem 'binding_of_caller', '~> 0.6'
-  gem 'better_errors', '~> 0.3'
+  gem 'better_errors', '~> 0.9'
+  gem 'foreman'
+  gem 'yard-activerecord', '~> 0.0.8'
+  gem 'redcarpet'
 end
 
 # Time parsing

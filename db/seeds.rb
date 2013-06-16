@@ -7,11 +7,16 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 require 'open-uri'
-
+require 'time'
 require File.dirname(__FILE__) + '/../config/environment.rb'
 
-locations = YAML.load_file("#{Rails.root}/lib/locations.yml")
+# Set the time zone for Chronic
+Chronic.time_class = Time.zone
 
+# Read the locations from the data file into a Ruby object
+locations = YAML.load_file "#{Rails.root}/lib/locations.yml"
+
+# Create a Location object for each location from the data file
 locations.each do |location|
   Location.create!({
     name: location['name'],
