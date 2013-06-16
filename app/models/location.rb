@@ -38,9 +38,6 @@ class Location < ActiveRecord::Base
   # @param [Time] time the Time that the user wants to know if the Location is
   # open during (defaults to the current time if it is not given)
   #
-  # @raise [ArgumentError] if an internal error causes the part_of_week
-  # variable to have an invalid value (TODO remove this)
-  #
   # @return [Boolean] true if the Location is open at the given Time
   #
   # TODO refactor
@@ -60,8 +57,6 @@ class Location < ActiveRecord::Base
     elsif part_of_week == :weekends
       start_time = weekend_start
       end_time   = weekend_end
-    else
-      raise ArgumentError
     end
 
     logger.debug "Checking to see if #{time} is between #{start_time} and #{end_time}."

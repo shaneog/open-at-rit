@@ -36,8 +36,6 @@ module LocationsHelper
     elsif part_of_week == :weekends
       start_time = location.weekend_start
       end_time   = location.weekend_end
-    else
-      raise ArgumentError
     end
 
     start_time = start_time.localtime.strftime(TIME_FORMAT).strip
