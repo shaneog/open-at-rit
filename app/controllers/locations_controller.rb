@@ -1,9 +1,13 @@
+# Displays all Locations with both their preset and generated data.
 class LocationsController < ApplicationController
 
   respond_to :html, :json
 
-  # GET /locations
-  # GET /locations.json
+  # Displays all Locations in the database.
+  #
+  # GET /
+  #
+  # @return [String] the HTML for the list of Locations
   def index
     @locations = Location.all
 
