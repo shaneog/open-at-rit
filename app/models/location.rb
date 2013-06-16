@@ -60,9 +60,8 @@ class Location < ActiveRecord::Base
     time.change year: 2000, month: 1, day: 1
   end
 
-  # TODO refactor
   def self.is_weekday? time
-    not (time.saturday? || time.sunday?)
+    (1..5) === time.wday
   end
 
 end
