@@ -58,6 +58,9 @@ group :development do
   gem 'binding_of_caller', '~> 0.6'
   gem 'better_errors', '~> 0.9'
   gem 'foreman'
+  gem 'yard', '~> 0.8.5.2'
+  gem 'yard-activerecord', '~> 0.0.8'
+  gem 'redcarpet'
 end
 
 # Time parsing
