@@ -25,10 +25,12 @@ class LocationTest < ActiveSupport::TestCase
   test 'should know if it is open at a certain time' do
     assert(@corner_store.open?(Chronic.parse '8 am on Monday'),   'it should be open')
     assert(@corner_store.open?(Chronic.parse '12 pm on Monday'),  'it should be open')
+    assert(@corner_store.open?(Chronic.parse '12 am on Tuesday'), 'it should be open')
     assert(!@corner_store.open?(Chronic.parse '2 am on Tuesday'), 'it should be closed')
 
     assert(@corner_store.open?(Chronic.parse '10:30 am on Saturday'), 'it should be open')
     assert(@corner_store.open?(Chronic.parse '12 pm on Saturday'),    'it should be open')
+    assert(@corner_store.open?(Chronic.parse '12 am on Sunday'),      'it should be open')
     assert(!@corner_store.open?(Chronic.parse '2 am on Sunday'),      'it should be closed')
   end
 
