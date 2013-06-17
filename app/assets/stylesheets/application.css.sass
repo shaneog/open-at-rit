@@ -9,22 +9,13 @@
  * compiled file, but it's generally better to create a new file per style scope.
  */
 
-// Bootswatch variables
-@import "bootswatch/flatly/variables"
-
 // Bootstrap itself
-@import "bootstrap"
+@import "twitter/bootstrap"
 
 // We need to set the body's top padding here so that the responsive styles can
 // override it
 body
   padding-top: 75px
-
-// Responsive styles
-@import "bootstrap-responsive"
-
-// Bootswatch styles
-@import "bootswatch/flatly/bootswatch"
 
 // Location styles
 @import "locations"
