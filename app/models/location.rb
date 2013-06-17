@@ -23,7 +23,7 @@ class Location < ActiveRecord::Base
   # most important method in the application.
   #
   # @param [Time] time the Time that the user wants to know if the Location is
-  # open during (defaults to the current time if it is not given)
+  #   open during (defaults to the current time if it is not given)
   #
   # @return [Boolean] true if the Location is open at the given Time
   #
@@ -54,13 +54,13 @@ class Location < ActiveRecord::Base
   # week.
   #
   # @param [Symbol] part_of_week the part of the week that will be tested for
-  # any open times (:weekdays or :weekends)
+  #   any open times (:weekdays or :weekends)
   #
   # @raise [ArgumentError] if part_of_week is set to anything other than
-  # :weekdays or :weekends
+  #   :weekdays or :weekends
   #
   # @return [Boolean] true if the Location is ever open during the appropriate
-  # part of the week
+  #   part of the week
   #
   # TODO refactor
   def open_on? part_of_week
@@ -82,7 +82,7 @@ class Location < ActiveRecord::Base
   # @param [Time] time the original Time, which is used to create the new Time
   #
   # @return [Time] a copy of the original Time with its date reset to 2000/1/1
-  # (returns nil if the given time was nil)
+  #   (returns nil if the given time was nil)
   def self.reset_date time
     return nil if time.nil?
     time.change year: 2000, month: 1, day: 1
