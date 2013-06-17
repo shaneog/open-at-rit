@@ -3,8 +3,8 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 # Use Rails 4
-gem 'rails', '~> 4.0.0.rc1', github: 'rails/rails', branch: '4-0-stable'
-gem 'arel', github: 'rails/arel'
+gem 'rails', '4.0.0.rc1'
+#gem 'arel', github: 'rails/arel'
 
 # Use thin as the server
 gem 'thin', '~> 1.5'
@@ -18,10 +18,10 @@ group :development, :test do
 end
 
 # Use edge version of sprockets-rails
-gem 'sprockets-rails', github: 'rails/sprockets-rails'
+gem 'sprockets-rails', '~> 2.0.0.rc4'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', github: 'rails/sass-rails'
+gem 'sass-rails', '~> 4.0.0.rc1'
 
 # Use Bootstrap and Bootswatch for styles and scripts
 gem 'bootstrap-sass', '~> 2.3.2.0'
@@ -31,7 +31,7 @@ gem 'bootswatch-rails', '~> 0.5'
 gem 'uglifier', '>= 1.3.0'
 
 # Use CoffeeScript for .js.coffee assets and views
-#gem 'coffee-rails', github: 'rails/coffee-rails'
+#gem 'coffee-rails', '~> 4.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
