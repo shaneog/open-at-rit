@@ -16,25 +16,8 @@ class Location < ActiveRecord::Base
     presence: true,
     uniqueness: true
 
-  # A callback that runs before any Location is saved. This first resets the
-  # dates of all the Location's Times to 2000/1/1, and then adds a day to end
-  # times if needed to ensure that the end times are always after their
-  # matching start times.
-  #
-  # TODO refactor
-  before_save do
-    Location.reset_date weekday_start
-    Location.reset_date weekday_end
-    Location.reset_date weekend_start
-    Location.reset_date weekend_end
-
-    if weekday_start && weekday_end
-      self.weekday_end += 1.day if weekday_end < weekday_start
-    end
-    if weekend_start && weekend_end
-      self.weekend_end += 1.day if weekend_end < weekend_start
-    end
-  end
+  # A callback that runs before any Location is saved.
+  before_save :adjust_times
 
   # Returns true if the Location is open at the given Time. This is likely the
   # most important method in the application.
@@ -112,6 +95,26 @@ class Location < ActiveRecord::Base
   # @return [Boolean] true if the Time is on a weekday
   def self.is_weekday? time
     (1..5) === time.wday
+  end
+
+  # Adjusts the times of a Location before it is saved to avoid some Time
+  # comparison issues. This first resets the dates of all the Location's Times
+  # to 2000/1/1, and then adds a day to end times if needed to ensure that the
+  # end times are always after their matching start times.
+  #
+  # TODO refactor
+  def adjust_times
+    Location.reset_date weekday_start
+    Location.reset_date weekday_end
+    Location.reset_date weekend_start
+    Location.reset_date weekend_end
+
+    if weekday_start && weekday_end
+      self.weekday_end += 1.day if weekday_end < weekday_start
+    end
+    if weekend_start && weekend_end
+      self.weekend_end += 1.day if weekend_end < weekend_start
+    end
   end
 
 end
