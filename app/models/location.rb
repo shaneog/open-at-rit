@@ -47,7 +47,11 @@ class Location < ActiveRecord::Base
     end
 
     logger.debug "Checking to see if #{time} is between #{start_time} and #{end_time}."
-    (start_time..end_time).cover? time
+
+    # TODO find a better way to do this that won't break when moving between
+    # weekdays and weekends
+    hours = start_time...end_time
+    hours.cover? time or hours.cover? time + 1.day
   end
 
   # Returns true if the Location is ever open during the appropriate part of the
