@@ -2,7 +2,7 @@
 
 corner_store:
   name: The Corner Store
-  weekday_start: <%= Time.local(2000, 1, 1, 8,  0,  0).utc.to_s :db %>
-  weekday_end:   <%= Time.local(2000, 1, 1, 2,  0,  0).utc.to_s :db %>
-  weekend_start: <%= Time.local(2000, 1, 1, 10, 30, 0).utc.to_s :db %>
-  weekend_end:   <%= Time.local(2000, 1, 1, 2,  0,  0).utc.to_s :db %>
+  weekday_start: 2000-1-1 8:00:00  -05:00
+  weekday_end:   2000-1-1 2:00:00  -05:00
+  weekend_start: 2000-1-1 10:30:00 -05:00
+  weekend_end:   2000-1-1 2:00:00  -05:00

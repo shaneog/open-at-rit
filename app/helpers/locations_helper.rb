@@ -18,13 +18,13 @@ module LocationsHelper
   #
   # @param [Location] location the Location to display hours for
   # @param [Symbol] part_of_week the time of the week for which the hours should
-  # be displayed during (:weekdays or :weekends)
+  #   be displayed during (:weekdays or :weekends)
   #
   # @raise [ArgumentError] if part_of_week is set to anything other than
-  # :weekdays or :weekends
+  #   :weekdays or :weekends
   #
   # @return [String] the generated text of the Location's hours during the
-  # appropriate part of the week, in the format "START to END"
+  #   appropriate part of the week, in the format "START to END"
   #
   # TODO refactor
   def hours_for location, part_of_week
