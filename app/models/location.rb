@@ -28,7 +28,7 @@ class Location < ActiveRecord::Base
   # @return [Boolean] true if the Location is open at the given Time
   #
   # TODO refactor
-  def open? time=Time.now
+  def open? time=Time.current
     # Figure out if the time is between the hours for the appropriate part of
     # the week
     part_of_week = Location.is_weekday?(time) ? :weekdays : :weekends
