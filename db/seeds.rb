@@ -13,17 +13,23 @@ require File.dirname(__FILE__) + '/../config/environment.rb'
 # Set the time zone for Chronic
 Chronic.time_class = Time.zone
 
-# Read the locations from the data file into a Ruby object
-locations = YAML.load_file "#{Rails.root}/lib/locations.yml"
+# Parses a String with Chronic and returns a Time representation of it
+#
+# @param [String] time_string the string to parse (any valid Chronic string)
+#
+# @return [Time] the Time representation of the string created by Chronic
+def parse_time time_string
+  Chronic.parse time_string
+end
 
 # Create a Location object for each location from the data file
-locations.each do |location|
+YAML.load_file("#{Rails.root}/lib/locations.yml").each do |location|
   Location.create!({
-    name: location['name'],
-    explanation: location['explanation'],
-    weekday_start: Chronic.parse(location['weekday_start']),
-    weekday_end: Chronic.parse(location['weekday_end']),
-    weekend_start: Chronic.parse(location['weekend_start']),
-    weekend_end: Chronic.parse(location['weekend_end'])
+    name:          location['name'],
+    explanation:   location['explanation'],
+    weekday_start: parse_time(location['weekday_start']),
+    weekday_end:   parse_time(location['weekday_end']),
+    weekend_start: parse_time(location['weekend_start']),
+    weekend_end:   parse_time(location['weekend_end'])
   })
 end
