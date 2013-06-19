@@ -31,6 +31,13 @@ class LocationTest < ActiveSupport::TestCase
     assert_raise ArgumentError do @corner_store.open_on?(:the_moon) end
   end
 
+  test 'should reset a Time\'s date back to 2000/1/1' do
+    assert_nil Location.reset_date nil
+
+    time = Chronic.parse '5 pm on Monday'
+    assert_equal '2000-01-01 17:00:00 -0500', Location.reset_date(time).to_s
+  end
+
   test 'should know if a certain time is a weekday' do
     assert Location.is_weekday?(Chronic.parse 'Monday'),    'Monday should be a weekday'
     assert Location.is_weekday?(Chronic.parse 'Tuesday'),   'Tuesday should be a weekday'
