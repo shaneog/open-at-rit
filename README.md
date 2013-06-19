@@ -1,4 +1,8 @@
-# [Open at RIT](http://openatrit.herokuapp.com) [![Build Status](https://secure.travis-ci.org/thenickperson/open-at-rit.png?branch=master)](http://travis-ci.org/thenickperson/open-at-rit) [![Dependency Status](https://gemnasium.com/thenickperson/open-at-rit.png)](https://gemnasium.com/thenickperson/open-at-rit) [![Code Climate](https://codeclimate.com/github/thenickperson/open-at-rit.png)](https://codeclimate.com/github/thenickperson/open-at-rit)
+# [Open at RIT](http://openatrit.herokuapp.com)
+[![Build Status](https://secure.travis-ci.org/thenickperson/open-at-rit.png?branch=master)](http://travis-ci.org/thenickperson/open-at-rit)
+[![Dependency Status](https://gemnasium.com/thenickperson/open-at-rit.png)](https://gemnasium.com/thenickperson/open-at-rit)
+[![Code Climate](https://codeclimate.com/github/thenickperson/open-at-rit.png)](https://codeclimate.com/github/thenickperson/open-at-rit)
+[![Coverage Status](https://coveralls.io/repos/thenickperson/open-at-rit/badge.png)](https://coveralls.io/r/thenickperson/open-at-rit)
 
 ## Project Status
 __Unstable and in development.__
@@ -27,13 +31,14 @@ Technology](https://www.rit.edu).
 - a simple JSON API
 
 ## Installation
-1. Install and use Ruby 2.0. Make sure you have the bundler gem. It will
-   install Rails 4 for you.
-2. `git clone https://github.com/thenickperson/open-at-rit.git`
-3. `cd open-at-rit`
-4. `bundle install`
-5. `rake db:setup`
-6. `rails server`
+Before you start, install and use Ruby 2.0. Make sure you have the bundler gem. It will install Rails 4 for you.
+```bash
+git clone https://github.com/thenickperson/open-at-rit.git`
+cd open-at-rit
+bundle install
+rake db:setup
+rails server
+```
 
 ## Technology Stack
 - Ruby 2
