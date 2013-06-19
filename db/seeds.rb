@@ -19,7 +19,7 @@ Chronic.time_class = Time.zone
 #
 # @return [Time] the Time representation of the string created by Chronic
 def parse_time time_string
-  Chronic.parse time_string
+  time_string.present? ? Chronic.parse(time_string).seconds_since_midnight : nil
 end
 
 # Create a Location object for each location from the data file
