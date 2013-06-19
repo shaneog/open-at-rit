@@ -42,6 +42,8 @@ class Location < ActiveRecord::Base
       end_time   = weekend_end
     end
 
+    time = time.seconds_since_midnight
+
     logger.debug "Checking to see if #{time} is between #{start_time} and #{end_time}."
 
     # TODO find a better way to do this that won't break when moving between

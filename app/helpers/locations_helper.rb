@@ -38,8 +38,8 @@ module LocationsHelper
       end_time   = location.weekend_end
     end
 
-    start_time = start_time.localtime.strftime(TIME_FORMAT).strip
-    end_time   = end_time.localtime.strftime(TIME_FORMAT).strip
+    start_time = Time.current.midnight.since(start_time).strftime(TIME_FORMAT).strip
+    end_time   = Time.current.midnight.since(end_time).strftime(TIME_FORMAT).strip
 
     "#{start_time} to #{end_time}"
   end
