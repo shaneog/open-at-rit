@@ -4,7 +4,6 @@ ruby '2.0.0'
 
 # Use Rails 4
 gem 'rails', '4.0.0.rc2'
-#gem 'arel', github: 'rails/arel'
 
 # Use thin as the server
 gem 'thin', '~> 1.5'
@@ -17,11 +16,8 @@ group :development, :test do
   gem 'sqlite3'
 end
 
-# Use edge version of sprockets-rails
-gem 'sprockets-rails', '~> 2.0.0.rc4'
-
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0.rc1'
+gem 'sass-rails', '~> 4.0.0.rc2'
 
 # Use Bootstrap and Bootswatch for styles and scripts
 gem 'bootstrap-sass', '~> 2.3.2.0'
