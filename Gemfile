@@ -49,7 +49,8 @@ group :doc do
 end
 
 group :test do
-  gem 'simplecov', '~> 0.7', require: false
+  #gem 'simplecov', '~> 0.7', require: false
+  gem 'coveralls', require: false
 end
 
 group :development do
