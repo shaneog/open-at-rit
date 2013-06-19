@@ -1,10 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-<% HOUR = 60 * 60 %>
-
 corner_store:
   name: The Corner Store
-  weekday_start: <%= 8    * HOUR %>
-  weekday_end:   <%= 2    * HOUR %>
-  weekend_start: <%= 10.5 * HOUR %>
-  weekend_end:   <%= 2    * HOUR %>
+  weekday_start: <%= 8.hour %>
+  weekday_end:   <%= 2.hour %>
+  weekend_start: <%= 10.5.hour %>
+  weekend_end:   <%= 2.hour %>
