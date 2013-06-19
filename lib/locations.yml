@@ -1,0 +1,69 @@
+-
+  name:          Artesano Bakery & Café
+  weekday_start: 8 a.m.
+  weekday_end:   2 p.m.
+-
+  name:          Beanz
+  weekday_start: 8 a.m.
+  weekday_end:   3 p.m.
+-
+  name:          Ben & Jerry's
+  weekday_start: 11 a.m.
+  weekday_end:   2 p.m.
+-
+  name:          Brick City Café
+  weekday_start: 7 a.m.
+  weekday_end:   3 p.m.
+-
+  name:          Bytes
+  weekday_start: 10 a.m.
+  weekday_end:   3 p.m.
+-
+  name:          Café & Market at Crossroads
+  weekday_start: 8 a.m.
+  weekday_end:   2 p.m.
+-
+  name:          The College Grind
+#-
+  #name:          The Commons
+  #weekday_start: 8 a.m., 11 a.m., 4:30 p.m.
+  #weekday_end:   9:30 am, 1:30 p.m., 6:30 p.m.
+  #weekend_start: 11 a.m., 4:30 p.m.
+  #weekend_end:   1 p.m., 6 p.m.
+#- Commencement Concessions (Field House)
+#- Commencement Concessions (Simone Circle)
+-
+  name:          The Corner Store
+  weekday_start: 8 a.m.
+  weekday_end:   8 p.m.
+  weekend_start: 11 a.m.
+  weekend_end:   7 p.m.
+-
+  name:          Ctrl Alt Deli
+  weekday_start: 7:30 a.m.
+  weekend_end:   2 p.m.
+-
+  name:          Freshens
+-
+  name:          Global Village Cantina and Grille
+  explanation:   Salsarita's, Oishii Sushi, and Global Grille
+  weekday_start: 11 a.m.
+  weekend_end:   6 p.m.
+-
+  name:          Global Village Market
+  weekday_start: 11 a.m.
+  weekend_end:   6 p.m.
+-
+  name:          Gracie's
+-
+  name:          Midnight Oil
+  weekday_start: 7:30 a.m.
+  weekend_end:   2 p.m.
+-
+  name:          Nathan's Soup & Salad
+  weekday_start: 10 a.m.
+  weekend_end:   2 p.m.
+-
+  name:          RITZ Sports Zone
+-
+  name:          Sol's Underground
