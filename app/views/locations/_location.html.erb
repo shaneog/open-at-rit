@@ -7,13 +7,19 @@
     <% end %>
   </div>
   <div class="info">
-    <p>
-      <strong>weekdays</strong>:
-      <span class="<%= location.open_on?(:weekdays) ? 'text-success' : 'text-error' %>"><%= hours_for location, :weekdays %></span>
-    </p>
-    <p>
-      <strong>weekends</strong>:
-      <span class="<%= location.open_on?(:weekends) ? 'text-success' : 'text-error' %>"><%= hours_for location, :weekends %></span>
-    </p>
+    <% if location.open_on?(:weekdays) || location.open_on?(:weekends) %>
+      <p>
+        <strong>weekdays</strong>:
+        <span class="<%= location.open_on?(:weekdays) ? 'text-success' : 'text-error' %>"><%= hours_for location, :weekdays %></span>
+      </p>
+      <p>
+        <strong>weekends</strong>:
+        <span class="<%= location.open_on?(:weekends) ? 'text-success' : 'text-error' %>"><%= hours_for location, :weekends %></span>
+      </p>
+    <% else %>
+      <p>
+        <span class="text-error">always closed</span>
+      </p>
+    <% end %>
   </div>
 </div>
