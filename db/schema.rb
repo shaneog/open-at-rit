@@ -11,17 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130621020443) do
+ActiveRecord::Schema.define(version: 20130621033806) do
 
   create_table "locations", force: true do |t|
     t.string   "name"
-    t.string   "weekday_start"
-    t.string   "weekday_end"
-    t.string   "weekend_start"
-    t.string   "weekend_end"
+    t.string   "weekdays"
+    t.string   "weekends"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "explanation"
+    t.string   "description"
   end
 
 end
