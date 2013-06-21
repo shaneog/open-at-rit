@@ -43,11 +43,9 @@ class LocationTest < ActiveSupport::TestCase
   end
 
   test 'should have its times adjusted properly' do
-    assert_equal 'The Corner Store', @corner_store.name
-    assert_equal 8.hour,    @corner_store.weekday_start
-    assert_equal 26.hour,   @corner_store.weekday_end
-    assert_equal 10.5.hour, @corner_store.weekend_start
-    assert_equal 26.hour,   @corner_store.weekend_end
+    assert_equal 'The Corner Store',                  @corner_store.name
+    assert_equal [(8.hour.to_i)...(26.hour.to_i)],    @corner_store.weekdays
+    assert_equal [(10.5.hour.to_i)...(26.hour.to_i)], @corner_store.weekends
     assert_nil @corner_store.description
   end
 
