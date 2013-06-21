@@ -1,11 +1,16 @@
-# A Location at RIT. Every Location has a name, start/end times for its hours on
-# weekdays/weekends, and an optional description (displayed in a tooltip in the
-# view, if there is one). Location data should not frequently change at runtime,
-# because the appropriate data is created in a database seed. If a location is
-# always closed during weekdays and/or weekends, the appropriate times will be
-# set to nil.
+# A Location at RIT. Every Location has a name, two lists of hours (one for
+# during the week, another for during the weekend), and an optional description
+# (displayed in a tooltip in the view, if there is one). Location data should
+# not frequently change at runtime, because the appropriate data is created in a
+# database seed. If a location is always closed during weekdays and/or weekends,
+# the appropriate times will be set to nil.
 class Location < ActiveRecord::Base
 
+  # The weekdays/weekends property is a serialized String representing an Array
+  # of Ranges of Integers. The Array represents all the hours for a given part
+  # of the week. Each Range represents one part of the hours (open and close
+  # time). Each Integer represents the number of seconds after midnight that the
+  # Location opens or closes.
   serialize :weekdays, Array
   serialize :weekends, Array
 
@@ -89,6 +94,17 @@ class Location < ActiveRecord::Base
     (1..5) === time.wday
   end
 
+  # Returns a corrected version of a time Range that ensures that the close time
+  # is after the open time. If a Range needs to be corrected, a copy of it with
+  # the end advanced a day is returned. Otherwise, the unmodified Range is
+  # returned.
+  #
+  # @param [Range] time_range a Range of Integers to correct
+  #
+  # @return [Range] a corrected copy of the Range, or the original Range if it
+  #   does not need to be corrected
+  #
+  # TODO refactor
   def self.correct_time_range time_range
     if time_range.begin < time_range.end
       time_range

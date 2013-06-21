@@ -13,8 +13,8 @@ module LocationsHelper
   # strftime.
   TIME_FORMAT = '%l:%M %P'
 
-  # Generates a text display of the hours (start and end time) of a given
-  # location during either weekdays or weekends.
+  # Generates a text display of the hours of a given location during either
+  # weekdays or weekends.
   #
   # @param [Location] location the Location to display hours for
   # @param [Symbol] part_of_week the time of the week for which the hours should
@@ -24,7 +24,8 @@ module LocationsHelper
   #   :weekdays or :weekends
   #
   # @return [String] the generated text of the Location's hours during the
-  #   appropriate part of the week, in the format "START to END"
+  #   appropriate part of the week, in the format "START to END, START to END,
+  #   ..."
   #
   # TODO refactor
   def hours_for location, part_of_week
