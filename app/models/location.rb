@@ -6,10 +6,8 @@
 # set to nil.
 class Location < ActiveRecord::Base
 
-  serialize :weekday_start, Array
-  serialize :weekday_end,   Array
-  serialize :weekend_start, Array
-  serialize :weekend_end,   Array
+  serialize :weekdays, Array
+  serialize :weekends, Array
 
   # Locations are sorted by name in alphabetical order.
   default_scope { order 'name ASC' }
@@ -91,18 +89,23 @@ class Location < ActiveRecord::Base
     (1..5) === time.wday
   end
 
+  def self.correct_time_range time_range
+    if time_range.begin < time_range.end
+      time_range
+    else
+      new_end = time_range.end + 1.day
+      time_range.begin...new_end
+    end
+  end
+
   # A callback that runs before any Location is saved. This adds a day to end
   # times if needed to ensure that the end times are always after their matching
   # start times.
   #
   # TODO refactor
   def adjust_times
-    if weekday_start && weekday_end
-      self.weekday_end += 1.day if weekday_end < weekday_start
-    end
-    if weekend_start && weekend_end
-      self.weekend_end += 1.day if weekend_end < weekend_start
-    end
+    weekdays.map { |time_range| Location.correct_time_range time_range } if weekdays.present?
+    weekends.map { |time_range| Location.correct_time_range time_range } if weekends.present?
   end
 
 end
