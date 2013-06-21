@@ -1,5 +1,5 @@
 # A Location at RIT. Every Location has a name, start/end times for its hours on
-# weekdays/weekends, and an optional explanation (displayed in a tooltip in the
+# weekdays/weekends, and an optional description (displayed in a tooltip in the
 # view, if there is one). Location data should not frequently change at runtime,
 # because the appropriate data is created in a database seed. If a location is
 # always closed during weekdays and/or weekends, the appropriate times will be

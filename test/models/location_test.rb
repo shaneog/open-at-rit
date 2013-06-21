@@ -48,7 +48,7 @@ class LocationTest < ActiveSupport::TestCase
     assert_equal 26.hour,   @corner_store.weekday_end
     assert_equal 10.5.hour, @corner_store.weekend_start
     assert_equal 26.hour,   @corner_store.weekend_end
-    assert_nil @corner_store.explanation
+    assert_nil @corner_store.description
   end
 
 end
