@@ -104,8 +104,8 @@ class Location < ActiveRecord::Base
   #
   # TODO refactor
   def adjust_times
-    weekdays.map { |time_range| Location.correct_time_range time_range } if weekdays.present?
-    weekends.map { |time_range| Location.correct_time_range time_range } if weekends.present?
+    weekdays.map! { |time_range| Location.correct_time_range time_range } if weekdays.present?
+    weekends.map! { |time_range| Location.correct_time_range time_range } if weekends.present?
   end
 
 end
