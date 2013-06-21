@@ -31,17 +31,22 @@ module LocationsHelper
     return 'closed' unless location.open_on? part_of_week
 
     if part_of_week == :weekdays
-      start_time = location.weekday_start
-      end_time   = location.weekday_end
+      hours = location.weekdays
     elsif part_of_week == :weekends
-      start_time = location.weekend_start
-      end_time   = location.weekend_end
+      hours = location.weekends
     end
 
-    start_time = Time.current.midnight.since(start_time).strftime(TIME_FORMAT).strip
-    end_time   = Time.current.midnight.since(end_time).strftime(TIME_FORMAT).strip
+    result = ''
 
-    "#{start_time} to #{end_time}"
+    hours.each do |time_range|
+      start_time = Time.current.midnight.since(time_range.begin).strftime(TIME_FORMAT).strip
+      end_time   = Time.current.midnight.since(time_range.end).strftime(TIME_FORMAT).strip
+
+      result << ', ' unless result.empty?
+      result << "#{start_time} to #{end_time}"
+    end
+
+    result
   end
 
 end

@@ -38,21 +38,21 @@ class Location < ActiveRecord::Base
     return false unless open_on? part_of_week
 
     if part_of_week == :weekdays
-      start_time = weekday_start
-      end_time   = weekday_end
+      hours = weekdays
     elsif part_of_week == :weekends
-      start_time = weekend_start
-      end_time   = weekend_end
+      hours = weekends
     end
 
     time = time.seconds_since_midnight
 
-    logger.debug "Checking to see if #{time} is between #{start_time} and #{end_time}."
+    # TODO fix this log message
+    #logger.debug "Checking to see if #{time} is between #{start_time} and #{end_time}."
 
     # TODO find a better way to do this that won't break when moving between
     # weekdays and weekends
-    hours = start_time...end_time
-    hours.cover? time or hours.cover? time + 1.day
+    hours.any? do |time_range|
+      time_range.cover? time or time_range.cover? time + 1.day
+    end
   end
 
   # Returns true if the Location is ever open during the appropriate part of the
@@ -70,9 +70,9 @@ class Location < ActiveRecord::Base
   # TODO refactor
   def open_on? part_of_week
     if part_of_week == :weekdays
-      not (weekday_start.nil? || weekday_end.nil?)
+      weekdays.present?
     elsif part_of_week == :weekends
-      not (weekend_start.nil? || weekend_end.nil?)
+      weekends.present?
     else
       raise ArgumentError
     end
