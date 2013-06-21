@@ -6,6 +6,11 @@
 # set to nil.
 class Location < ActiveRecord::Base
 
+  serialize :weekday_start, Array
+  serialize :weekday_end,   Array
+  serialize :weekend_start, Array
+  serialize :weekend_end,   Array
+
   # Locations are sorted by name in alphabetical order.
   default_scope { order 'name ASC' }
 
