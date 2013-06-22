@@ -5,10 +5,7 @@
 [![Coverage Status](https://coveralls.io/repos/thenickperson/open-at-rit/badge.png)](https://coveralls.io/r/thenickperson/open-at-rit)
 
 ## Project Status
-__Unstable and in development.__
-
-Please do not rely on it yet, as locations are currently always displayed as
-closed (which is innacurate). This should be fixed soon.
+__In development. App temporarily down. A public alpha will be released soon.__
 
 ## About
 Open at RIT is a simple one-page web application that makes it easy to check
