@@ -42,7 +42,7 @@ class LocationTest < ActiveSupport::TestCase
     assert !Location.is_weekday?(Chronic.parse 'Sunday'),   'Sunday should not be a weekday'
   end
 
-  test 'should have its times adjusted properly' do
+  test 'should be initialized properly' do
     assert_equal 'The Corner Store',                  @corner_store.name
     assert_equal [(8.hour.to_i)...(26.hour.to_i)],    @corner_store.weekdays
     assert_equal [(10.5.hour.to_i)...(26.hour.to_i)], @corner_store.weekends
