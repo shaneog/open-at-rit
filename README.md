@@ -3,6 +3,7 @@
 [![Dependency Status](https://gemnasium.com/thenickperson/open-at-rit.png)](https://gemnasium.com/thenickperson/open-at-rit)
 [![Code Climate](https://codeclimate.com/github/thenickperson/open-at-rit.png)](https://codeclimate.com/github/thenickperson/open-at-rit)
 [![Coverage Status](https://coveralls.io/repos/thenickperson/open-at-rit/badge.png)](https://coveralls.io/r/thenickperson/open-at-rit)
+
 Open at RIT is a simple one-page web application that makes it easy to check
 which dining locations are currently open at the [Rochester Institute of
 Technology](https://www.rit.edu).
