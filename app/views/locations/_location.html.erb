@@ -1,25 +1,29 @@
 <div class="span<%= LocationsHelper::LOCATION_WIDTH %> well location <%= location.open? ? 'open' : 'closed' %>">
   <div class="name">
-    <% if location.description %>
-      <abbr title="<%= location.description %>"><%= location.name %></abbr>
-    <% else %>
-      <%= location.name %>
-    <% end %>
+    <div class="pull-middle">
+      <% if location.description %>
+        <abbr title="<%= location.description %>"><%= location.name %></abbr>
+      <% else %>
+        <%= location.name %>
+      <% end %>
+    </div>
   </div>
   <div class="info">
-    <% if location.open_on?(:weekdays) || location.open_on?(:weekends) %>
-      <p>
-        <strong>weekdays</strong>:
-        <span class="<%= location.open_on?(:weekdays) ? 'text-success' : 'text-error' %>"><%= hours_for location, :weekdays %></span>
-      </p>
-      <p>
-        <strong>weekends</strong>:
-        <span class="<%= location.open_on?(:weekends) ? 'text-success' : 'text-error' %>"><%= hours_for location, :weekends %></span>
-      </p>
-    <% else %>
-      <p>
-        <span class="text-error">always closed</span>
-      </p>
-    <% end %>
+    <div class="pull-middle">
+      <% if location.open_on?(:weekdays) || location.open_on?(:weekends) %>
+        <p>
+          <strong>weekdays</strong>:
+          <span class="<%= location.open_on?(:weekdays) ? 'text-success' : 'text-error' %>"><%= hours_for location, :weekdays %></span>
+        </p>
+        <p>
+          <strong>weekends</strong>:
+          <span class="<%= location.open_on?(:weekends) ? 'text-success' : 'text-error' %>"><%= hours_for location, :weekends %></span>
+        </p>
+      <% else %>
+        <p>
+          <span class="text-error">always closed</span>
+        </p>
+      <% end %>
+    </div>
   </div>
 </div>
