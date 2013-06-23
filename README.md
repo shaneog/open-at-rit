@@ -9,7 +9,7 @@ which dining locations are currently open at the [Rochester Institute of
 Technology](https://www.rit.edu).
 
 ## Project Status
-__In development. App temporarily down. A public alpha will be released soon.__
+__In development. A public alpha is up.__
 
 
 ## Definite Features (in development)
