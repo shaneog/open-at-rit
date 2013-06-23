@@ -21,9 +21,6 @@ group :production do
   gem 'rails_12factor'
 end
 
-# Use New Relic for monitoring
-gem 'newrelic_rpm'
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0.rc2'
 
@@ -72,3 +69,6 @@ end
 
 # Time parsing
 gem 'chronic', '~> 0.9'
+
+# Use New Relic for monitoring
+gem 'newrelic_rpm'
