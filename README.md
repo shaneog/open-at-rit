@@ -4,16 +4,13 @@
 [![Code Climate](https://codeclimate.com/github/thenickperson/open-at-rit.png)](https://codeclimate.com/github/thenickperson/open-at-rit)
 [![Coverage Status](https://coveralls.io/repos/thenickperson/open-at-rit/badge.png)](https://coveralls.io/r/thenickperson/open-at-rit)
 
-## Project Status
-__Unstable and in development.__
-
-Please do not rely on it yet, as locations are currently always displayed as
-closed (which is innacurate). This should be fixed soon.
-
-## About
 Open at RIT is a simple one-page web application that makes it easy to check
 which dining locations are currently open at the [Rochester Institute of
 Technology](https://www.rit.edu).
+
+## Project Status
+__In development. A public alpha is up.__
+
 
 ## Definite Features (in development)
 - a simple, color-coded display that makes it easy to see what's open
@@ -33,7 +30,7 @@ Technology](https://www.rit.edu).
 ## Installation
 Before you start, install and use Ruby 2.0. Make sure you have the bundler gem. It will install Rails 4 for you.
 ```bash
-git clone https://github.com/thenickperson/open-at-rit.git`
+git clone https://github.com/thenickperson/open-at-rit.git
 cd open-at-rit
 bundle install
 rake db:setup

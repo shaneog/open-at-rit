@@ -18,18 +18,27 @@ Chronic.time_class = Time.zone
 # @param [String] time_string the string to parse (any valid Chronic string)
 #
 # @return [Time] the Time representation of the string created by Chronic
-def parse_time time_string
-  Chronic.parse time_string
+def parse_time_range time_string
+  return nil if time_string.nil?
+
+  start_time = Chronic.parse(time_string.split('-').first.strip).seconds_since_midnight
+  end_time   = Chronic.parse(time_string.split('-').last.strip).seconds_since_midnight
+
+  start_time...end_time
+end
+
+def parse_hours hours
+  return nil if hours.nil?
+
+  hours.split(',').map { |time| parse_time_range time }
 end
 
 # Create a Location object for each location from the data file
 YAML.load_file("#{Rails.root}/lib/locations.yml").each do |location|
   Location.create!({
-    name:          location['name'],
-    explanation:   location['explanation'],
-    weekday_start: parse_time(location['weekday_start']),
-    weekday_end:   parse_time(location['weekday_end']),
-    weekend_start: parse_time(location['weekend_start']),
-    weekend_end:   parse_time(location['weekend_end'])
+    name:        location['name'],
+    description: location['description'],
+    weekdays:    parse_hours(location['weekdays']),
+    weekends:    parse_hours(location['weekends'])
   })
 end

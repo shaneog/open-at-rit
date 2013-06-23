@@ -16,6 +16,11 @@ group :development, :test do
   gem 'sqlite3'
 end
 
+# Add Heroku integration for Rails 4
+group :production do
+  gem 'rails_12factor'
+end
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0.rc2'
 
@@ -67,3 +72,6 @@ gem 'chronic', '~> 0.9'
 
 # HTML parsing
 gem 'nokogiri'
+
+# Use New Relic for monitoring
+gem 'newrelic_rpm'

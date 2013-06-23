@@ -13,8 +13,8 @@ module LocationsHelper
   # strftime.
   TIME_FORMAT = '%l:%M %P'
 
-  # Generates a text display of the hours (start and end time) of a given
-  # location during either weekdays or weekends.
+  # Generates a text display of the hours of a given location during either
+  # weekdays or weekends.
   #
   # @param [Location] location the Location to display hours for
   # @param [Symbol] part_of_week the time of the week for which the hours should
@@ -24,24 +24,30 @@ module LocationsHelper
   #   :weekdays or :weekends
   #
   # @return [String] the generated text of the Location's hours during the
-  #   appropriate part of the week, in the format "START to END"
+  #   appropriate part of the week, in the format "START to END, START to END,
+  #   ..."
   #
   # TODO refactor
   def hours_for location, part_of_week
     return 'closed' unless location.open_on? part_of_week
 
     if part_of_week == :weekdays
-      start_time = location.weekday_start
-      end_time   = location.weekday_end
+      hours = location.weekdays
     elsif part_of_week == :weekends
-      start_time = location.weekend_start
-      end_time   = location.weekend_end
+      hours = location.weekends
     end
 
-    start_time = Time.current.midnight.since(start_time).strftime(TIME_FORMAT).strip
-    end_time   = Time.current.midnight.since(end_time).strftime(TIME_FORMAT).strip
+    result = ''
 
-    "#{start_time} to #{end_time}"
+    hours.each do |time_range|
+      start_time = Time.current.midnight.since(time_range.begin).strftime(TIME_FORMAT).strip
+      end_time   = Time.current.midnight.since(time_range.end).strftime(TIME_FORMAT).strip
+
+      result << ', ' unless result.empty?
+      result << "#{start_time} to #{end_time}"
+    end
+
+    result
   end
 
 end

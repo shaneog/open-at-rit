@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <!-- basic info -->
-  <title>Open at RIT</title>
+  <title>Open at RIT Alpha</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- css -->
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
@@ -17,24 +17,23 @@
 
 <!-- navbar -->
 <nav class="navbar navbar-fixed-top"><div class="navbar-inner"><div class="container">
-  <a class="brand" href="/">Open at <span class="brand-rit">RIT</span></a>
+  <a class="brand" href="/">Open at <span class="brand-rit">RIT</span> <span class="muted">Alpha</span></a>
   <ul class="nav">
     <li class="dropdown">
       <a class="dropdown-toggle" data-toggle="dropdown" href="#">Official Hours<b class="caret"></b></a>
       <ul class="dropdown-menu">
         <li><a href="http://www.rit.edu/fa/diningservices/content/hours-operation" target="_blank">Normal</a></li>
         <li class="divider"></li>
-        <li><a href="http://www.rit.edu/fa/diningservices/node/272" target="_blank">Commencement (May 17 - May 18)</a></li>
-        <li><a href="http://www.rit.edu/fa/diningservices/node/273" target="_blank">Spring/Summer Break (May 19 - May 27)</a></li>
         <li><a href="http://www.rit.edu/fa/diningservices/node/274" target="_blank">Summer (May 28 - Aug 11)</a></li>
         <li><a href="http://www.rit.edu/fa/diningservices/node/275" target="_blank">Summer/Fall Break (Aug 12 - Aug 18)</a></li>
       </ul>
     </li>
-    <li><a href="#">About</a></li>
+    <li><a href="https://github.com/thenickperson/open-at-rit#readme" target="_blank">About</a></li>
     <li><a href="https://github.com/thenickperson/open-at-rit/issues/new" target="_blank">Report an Issue</a></li>
   </ul>
 </div></div></nav>
 
+<!-- page content -->
 <%= yield %>
 
 <!-- footer -->

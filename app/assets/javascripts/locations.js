@@ -6,6 +6,13 @@
 // A collection of helper methods that act on all Locations being displayed.
 var Locations = {
 
+  // Updates various styling properties within the UI. Designed to be called on
+  // page load and on window resize.
+  updateUI: function () {
+    Locations.syncHeights();
+    Locations.verticalPull();
+  },
+
   // Syncs the heights of all the divs that represent Locations. Every Location
   // should have the same height as the tallest Location in its row.
   syncHeights: function () {
@@ -13,6 +20,15 @@ var Locations = {
     console.log("syncing heights...");
     var maxHeight = Locations.getMaxHeight();
     $('.location').css('height', maxHeight);
+  },
+
+  // Vertically centers any elements of the pull-middle class within their
+  // parent elements.
+  verticalPull: function () {
+    $(".pull-middle").each(function () {
+      var offset = $(this).parent().height() / 2 - $(this).height() / 2;
+      $(this).css("margin-top", offset);
+    });
   },
 
   // Gets the maximum height of all Locations being displayed.
@@ -26,9 +42,8 @@ var Locations = {
 
 };
 
-// When the document is ready, sync heights initially and then trigger it
-// whenever the window is resized.
+// When the document is done loading or the window is resized, update the UI.
 $(function () {
-  Locations.syncHeights();
-  $(window).resize(Locations.syncHeights);
+  Locations.updateUI();
+  $(window).resize(Locations.updateUI());
 });
