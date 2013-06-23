@@ -18,8 +18,10 @@ var Locations = {
   syncHeights: function () {
     // TODO remove this log message when it is no longer needed
     console.log("syncing heights...");
-    var maxHeight = Locations.getMaxHeight();
-    $('.location').css('height', maxHeight);
+
+    $(".location-row").each(function () {
+      $('.location', this).css('height', Locations.getMaxHeight(this));
+    });
   },
 
   // Vertically centers any elements of the pull-middle class within their
@@ -32,8 +34,8 @@ var Locations = {
   },
 
   // Gets the maximum height of all Locations being displayed.
-  getMaxHeight: function () {
-    var heights = $(".location").map(function () {
+  getMaxHeight: function (context) {
+    var heights = $(".location", context).map(function () {
       return $(this).height();
     }).get();
 
