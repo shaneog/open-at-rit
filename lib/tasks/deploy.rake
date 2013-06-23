@@ -16,7 +16,7 @@ namespace :deploy do
 
   task :migrate do
     puts 'Running database migrations ...'
-    puts `heroku rake db:migrate --app #{APP}`
+    puts `heroku run rake db:migrate --app #{APP}`
   end
 
   task :off do
