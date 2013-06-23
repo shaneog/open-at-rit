@@ -1,5 +1,5 @@
-#Deploy and rollback on Heroku in production
-task deploy: ['deploy:push', 'deploy:restart', 'deploy:migrate']
+# Deploy to Heroku in production
+task deploy: ['deploy:push', 'deploy:migrate']
 
 namespace :deploy do
   APP = 'openatrit'
