@@ -165,6 +165,7 @@ DEPENDENCIES
   bootstrap-sass (~> 2.3.2.0)
   bootswatch-rails (~> 0.5)
   chronic (~> 0.9)
+  coffee-rails
   coveralls
   foreman
   jbuilder (~> 1.4.2)

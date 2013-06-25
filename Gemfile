@@ -24,6 +24,9 @@ end
 # Use SCSS for stylesheets
 gem 'sass-rails'
 
+# Use CoffeeScript for scripts
+gem 'coffee-rails'
+
 # Use Bootstrap and Bootswatch for styles and scripts
 gem 'bootstrap-sass', '~> 2.3.2.0'
 gem 'bootswatch-rails', '~> 0.5'
