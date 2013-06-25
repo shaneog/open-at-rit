@@ -39,7 +39,7 @@ rails server
 
 ## Technology Stack
 - Ruby 2
-- Rails 4 (currently edge, in development)
+- Rails 4
 - JavaScript
 - SASS
 - Heroku (for production)
