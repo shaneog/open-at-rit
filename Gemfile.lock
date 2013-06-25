@@ -174,7 +174,7 @@ DEPENDENCIES
   rails (~> 4.0)
   rails_12factor
   redcarpet
-  sass-rails (~> 4.0.0.rc2)
+  sass-rails
   sdoc
   sqlite3
   thin (~> 1.5)

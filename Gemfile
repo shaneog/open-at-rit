@@ -22,7 +22,7 @@ group :production do
 end
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0.rc2'
+gem 'sass-rails'
 
 # Use Bootstrap and Bootswatch for styles and scripts
 gem 'bootstrap-sass', '~> 2.3.2.0'
