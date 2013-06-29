@@ -33,12 +33,13 @@ def parse_hours hours
   hours.split(',').map { |time| parse_time_range time }
 end
 
-# Create a Location object for each location from the data file
-YAML.load_file("#{Rails.root}/lib/locations.yml").each do |location|
-  Location.create!({
-    name:        location['name'],
-    description: location['description'],
-    weekdays:    parse_hours(location['weekdays']),
-    weekends:    parse_hours(location['weekends'])
-  })
+locations = YAML.load_file("#{Rails.root}/lib/locations.yml")
+
+locations.map do |location|
+  location['weekdays'] = parse_hours location['weekdays']
+  location['weekends'] = parse_hours location['weekends']
+  location
 end
+
+# Create a Location object for each location from the data file
+Location.create! locations
