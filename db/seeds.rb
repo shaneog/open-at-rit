@@ -33,7 +33,7 @@ def parse_hours hours
   hours.split(',').map { |time| parse_time_range time }
 end
 
-locations = YAML.load_file("#{Rails.root}/lib/locations.yml")
+locations = YAML.load_file "#{File.dirname __FILE__}/locations.yml"
 
 locations.map do |location|
   location['weekdays'] = parse_hours location['weekdays']
