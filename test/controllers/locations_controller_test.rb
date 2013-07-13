@@ -14,4 +14,9 @@ class LocationsControllerTest < ActionController::TestCase
     assert_not_nil assigns :locations
   end
 
+  test 'should show location' do
+    get :show, id: @corner_store
+    assert_response :success
+  end
+
 end

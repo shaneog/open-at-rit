@@ -14,4 +14,13 @@ class LocationsController < ApplicationController
     respond_with @locations
   end
 
+  # Displays one Location in the database.
+  #
+  # GET /locations/:id(.:format)
+  #
+  # @return [String] the HTML for the Location
+  def show
+    @location = Location.find params[:id]
+  end
+
 end

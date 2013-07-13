@@ -9,4 +9,7 @@ OpenAtRit::Application.routes.draw do
   get '/locations.json' => 'locations#index',
     format: false,
     defaults: { format: 'json' }
+
+  # The main resource
+  #resources :locations, only: [:index, :show]
 end
