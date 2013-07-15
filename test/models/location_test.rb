@@ -14,32 +14,30 @@ class LocationTest < ActiveSupport::TestCase
   #test 'should validate its name'
 
   test 'should know if it is open at a certain time' do
-    assert(@corner_store.open?(Chronic.parse '8 am on Monday'),   'it should be open at 8 am on Monday')
-    assert(@corner_store.open?(Chronic.parse '12 pm on Monday'),  'it should be open at 12 pm on Monday')
-    assert(@corner_store.open?(Chronic.parse '12 am on Tuesday'), 'it should be open at 12 am on Tuesday')
-    assert(!@corner_store.open?(Chronic.parse '2 am on Tuesday'), 'it should be closed at 2 am on Tuesday')
+    assert_open   @corner_store, '8 am on Monday'
+    assert_open   @corner_store, '12 pm on Monday'
+    assert_open   @corner_store, '12 am on Tuesday'
+    assert_closed @corner_store, '2 am on Tuesday'
 
-    assert(@corner_store.open?(Chronic.parse '10:30 am on Saturday'), 'it should be open at 10:30 am on Saturday')
-    assert(@corner_store.open?(Chronic.parse '12 pm on Saturday'),    'it should be open at 12 pm on Saturday')
-    assert(@corner_store.open?(Chronic.parse '12 am on Sunday'),      'it should be open at 12 am on Sunday')
-    assert(!@corner_store.open?(Chronic.parse '2 am on Sunday'),      'it should be closed at 2 am on Sunday')
+    assert_open   @corner_store, '10:30 am on Saturday'
+    assert_open   @corner_store, '12 pm on Saturday'
+    assert_open   @corner_store, '12 am on Sunday'
+    assert_closed @corner_store, '2 am on Sunday'
   end
 
   test 'should know if it is open during the week and weekend' do
     assert @corner_store.open_on?(:weekdays), 'it should be open on weekdays'
     assert @corner_store.open_on?(:weekends), 'it should be open on weekends'
+
     assert_raise ArgumentError do @corner_store.open_on?(:the_moon) end
   end
 
   test 'should know if a certain time is a weekday' do
-    assert Location.is_weekday?(Chronic.parse 'Monday'),    'Monday should be a weekday'
-    assert Location.is_weekday?(Chronic.parse 'Tuesday'),   'Tuesday should be a weekday'
-    assert Location.is_weekday?(Chronic.parse 'Wednesday'), 'Wednesday should be a weekday'
-    assert Location.is_weekday?(Chronic.parse 'Thursday'),  'Thursday should be a weekday'
-    assert Location.is_weekday?(Chronic.parse 'Friday'),    'Friday should be a weekday'
+    ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'].each do |day|
+      assert_weekday day
+    end
 
-    assert !Location.is_weekday?(Chronic.parse 'Saturday'), 'Saturday should not be a weekday'
-    assert !Location.is_weekday?(Chronic.parse 'Sunday'),   'Sunday should not be a weekday'
+    ['Saturday', 'Sunday'].each { |day| assert_not_weekday day }
   end
 
   test 'should be initialized properly' do

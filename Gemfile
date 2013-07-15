@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 # Use Rails 4
-gem 'rails', '4.0.0.rc2'
+gem 'rails', '~> 4.0'
 
 # Use thin as the server
 gem 'thin', '~> 1.5'
@@ -21,8 +21,13 @@ group :production do
   gem 'rails_12factor'
 end
 
+gem 'haml'
+
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0.rc2'
+gem 'sass-rails'
+
+# Use CoffeeScript for scripts
+gem 'coffee-rails'
 
 # Use Bootstrap and Bootswatch for styles and scripts
 gem 'bootstrap-sass', '~> 2.3.2.0'
