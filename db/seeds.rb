@@ -6,7 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-require 'open-uri'
 require 'time'
 require File.dirname(__FILE__) + '/../config/environment.rb'
 
@@ -33,13 +32,14 @@ def parse_hours(hours)
   hours.split(',').map { |time| parse_time_range time }
 end
 
-locations = YAML.load_file "#{File.dirname __FILE__}/locations.yml"
-
-locations.map do |location|
-  location['weekdays'] = parse_hours location['weekdays']
-  location['weekends'] = parse_hours location['weekends']
-  location
+def parse_hours_for location
+  location.merge({
+    'weekdays' => parse_hours(location['weekdays']),
+    'weekends' => parse_hours(location['weekends'])
+  })
 end
 
 # Create a Location object for each location from the data file
-Location.create! locations
+YAML.load_file(Rails.root.join 'db/locations.yml').each do |location|
+  Location.create! parse_hours_for location
+end
