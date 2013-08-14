@@ -45,7 +45,7 @@ rails server
 - Heroku (for production)
 
 ## Updating Hours
-This app currently uses the `lib/locations.yml` file to store information on
+This app currently uses the `db/locations.yml` file to store information on
 locations and their hours. This data file must be updated manually. `rake
 db:seed` will use this file to generate the database of locations from this
 file. After that, the database should not need to be modified unless hours
