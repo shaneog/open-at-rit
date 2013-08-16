@@ -32,14 +32,14 @@ module LocationsHelper
     return 'closed' unless location.open_on? part_of_week
 
     if part_of_week == :weekdays
-      hours = location.weekdays
+      selected_hours = location.hours[0]
     elsif part_of_week == :weekends
-      hours = location.weekends
+      selected_hours = location.hours[1]
     end
 
     result = ''
 
-    hours.each do |time_range|
+    selected_hours.each do |time_range|
       start_time = Time.current.midnight.since(time_range.begin).strftime(TIME_FORMAT).strip
       end_time   = Time.current.midnight.since(time_range.end).strftime(TIME_FORMAT).strip
 

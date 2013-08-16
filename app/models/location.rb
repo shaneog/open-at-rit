@@ -11,8 +11,8 @@ class Location < ActiveRecord::Base
   # of the week. Each Range represents one part of the hours (open and close
   # time). Each Integer represents the number of seconds after midnight that the
   # Location opens or closes.
-  serialize :weekdays, Array
-  serialize :weekends, Array
+  # TODO: Update this description for the new hours property
+  serialize :hours, Array
 
   # Locations are sorted by name in alphabetical order.
   default_scope { order 'name ASC' }
@@ -43,9 +43,9 @@ class Location < ActiveRecord::Base
     return false unless open_on? part_of_week
 
     if part_of_week == :weekdays
-      hours = weekdays
+      selected_hours = hours[0]
     elsif part_of_week == :weekends
-      hours = weekends
+      selected_hours = hours[1]
     end
 
     time = time.seconds_since_midnight
@@ -55,7 +55,7 @@ class Location < ActiveRecord::Base
 
     # TODO find a better way to do this that won't break when moving between
     # weekdays and weekends
-    hours.any? do |time_range|
+    selected_hours.any? do |time_range|
       time_range.cover? time or time_range.cover? time + 1.day
     end
   end
@@ -75,9 +75,9 @@ class Location < ActiveRecord::Base
   # TODO refactor
   def open_on? part_of_week
     if part_of_week == :weekdays
-      weekdays.present?
+      hours[0].present?
     elsif part_of_week == :weekends
-      weekends.present?
+      hours[1].present?
     else
       raise ArgumentError
     end
@@ -120,8 +120,9 @@ class Location < ActiveRecord::Base
   #
   # TODO refactor
   def adjust_times
-    weekdays.map! { |time_range| Location.correct_time_range time_range } if weekdays.present?
-    weekends.map! { |time_range| Location.correct_time_range time_range } if weekends.present?
+    hours.each do |period|
+      period.map! { |time_range| Location.correct_time_range time_range } if period.present?
+    end
   end
 
 end
