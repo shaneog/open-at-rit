@@ -6,6 +6,8 @@
 # the appropriate times will be set to nil.
 class Location < ActiveRecord::Base
 
+  include IceCube
+
   # The weekdays/weekends property is a serialized String representing an Array
   # of Ranges of Integers. The Array represents all the hours for a given part
   # of the week. Each Range represents one part of the hours (open and close
@@ -37,26 +39,12 @@ class Location < ActiveRecord::Base
   #
   # TODO refactor
   def open? time=Time.current
-    # Figure out if the time is between the hours for the appropriate part of
-    # the week
-    part_of_week = Location.is_weekday?(time) ? :weekdays : :weekends
-    return false unless open_on? part_of_week
-
-    if part_of_week == :weekdays
-      selected_hours = hours[0]
-    elsif part_of_week == :weekends
-      selected_hours = hours[1]
-    end
-
-    time = time.seconds_since_midnight
-
-    # TODO fix this log message
-    #logger.debug "Checking to see if #{time} is between #{start_time} and #{end_time}."
-
-    # TODO find a better way to do this that won't break when moving between
-    # weekdays and weekends
-    selected_hours.any? do |time_range|
-      time_range.cover? time or time_range.cover? time + 1.day
+    part_of_week = Location.is_weekday?(time) ? hours[0] : hours[1]
+    return false if part_of_week.nil?
+    part_of_week.any? do |hour_range|
+      start_time = time.midnight + hour_range.begin
+      end_time   = time.midnight + hour_range.end
+      Schedule.new(start_time, end_time: end_time).occurs_at? time
     end
   end
 
