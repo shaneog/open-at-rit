@@ -5,11 +5,6 @@ OpenAtRit::Application.routes.draw do
   # The home page, which is the list of all Locations
   root 'locations#index'
 
-  # The main page of the JSON API, which also lists all Locations
-  get '/locations.json' => 'locations#index',
-    format: false,
-    defaults: { format: 'json' }
-
   # The main resource
-  #resources :locations, only: [:index, :show]
+  resources :locations, only: [:index, :show]
 end
