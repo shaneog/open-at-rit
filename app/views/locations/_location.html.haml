@@ -1,4 +1,4 @@
-%div{class: "span#{LocationsHelper::LOCATION_WIDTH} well location #{location.open? ? 'open' : 'closed'}"}
+%div{class: "col-sm-#{LocationsHelper::LOCATION_WIDTH} well location #{location.open? ? 'open' : 'closed'}"}
   .name
     .pull-middle
       - if location.description
@@ -11,11 +11,11 @@
         %p
           %strong> weekdays
           \:
-          %span{class: location.open_on?(:weekdays) ? 'text-success' : 'text-error'}= hours_for location, :weekdays
+          %span{class: location.open_on?(:weekdays) ? 'text-success' : 'text-danger'}= hours_for location, :weekdays
         %p
           %strong> weekends
           \:
-          %span{class: location.open_on?(:weekends) ? 'text-success' : 'text-error'}= hours_for location, :weekends
+          %span{class: location.open_on?(:weekends) ? 'text-success' : 'text-danger'}= hours_for location, :weekends
       - else
         %p
           %span.text-error always closed
