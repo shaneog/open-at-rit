@@ -21,8 +21,8 @@ class Location < ActiveRecord::Base
   #
   # TODO test validations
   validates :name,
-    presence: true,
-    uniqueness: true
+            presence: true,
+            uniqueness: true
 
   # A callback that runs before any Location is saved.
   before_save :adjust_times
@@ -36,7 +36,7 @@ class Location < ActiveRecord::Base
   # @return [Boolean] true if the Location is open at the given Time
   #
   # TODO refactor
-  def open? time=Time.current
+  def open?(time = Time.current)
     # Figure out if the time is between the hours for the appropriate part of
     # the week
     part_of_week = Location.is_weekday?(time) ? :weekdays : :weekends
@@ -56,7 +56,7 @@ class Location < ActiveRecord::Base
     # TODO find a better way to do this that won't break when moving between
     # weekdays and weekends
     hours.any? do |time_range|
-      time_range.cover? time or time_range.cover? time + 1.day
+      time_range.cover?(time) || time_range.cover?(time + 1.day)
     end
   end
 
@@ -73,7 +73,7 @@ class Location < ActiveRecord::Base
   #   part of the week
   #
   # TODO refactor
-  def open_on? part_of_week
+  def open_on?(part_of_week)
     if part_of_week == :weekdays
       weekdays.present?
     elsif part_of_week == :weekends
@@ -90,8 +90,8 @@ class Location < ActiveRecord::Base
   # @param [Time] time the Time to test (only its date matters)
   #
   # @return [Boolean] true if the Time is on a weekday
-  def self.is_weekday? time
-    (1..5) === time.wday
+  def self.is_weekday?(time)
+    (1..5).include? time.wday
   end
 
   # Returns a corrected version of a time Range that ensures that the close time
@@ -105,7 +105,7 @@ class Location < ActiveRecord::Base
   #   does not need to be corrected
   #
   # TODO refactor
-  def self.correct_time_range time_range
+  def self.correct_time_range(time_range)
     if time_range.begin < time_range.end
       time_range
     else
