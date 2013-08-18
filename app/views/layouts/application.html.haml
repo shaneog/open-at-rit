@@ -16,11 +16,19 @@
 
     / navbar
     %nav.navbar.navbar-static-top
+      / content to show on mobile
       .navbar-header
-        %a.navbar-brand{href: '/'}
+        %button.navbar-toggle{'data-target' => '.navbar-main-collapse', 'data-toggle' => 'collapse', type: 'button'}
+          %span.sr-only Toggle navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        %a.navbar-brand{href: '#'}
           Open at
           %span.brand-rit RIT
           %span.text-muted Alpha
+      / content to hide on mobile
+      .collapse.navbar-collapse.navbar-main-collapse
         %ul.nav.navbar-nav
           %li.dropdown
             %a.dropdown-toggle{'data-toggle' => 'dropdown', href: '#'}
