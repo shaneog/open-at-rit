@@ -1,0 +1,26 @@
+# Common configuration.
+AllCops:
+  Excludes:
+    - 'db/schema.rb'
+
+# Limit lines to 80 characters.
+LineLength:
+  Enabled: false
+
+# Avoid methods longer than 10 lines of code.
+MethodLength:
+  Enabled: false
+
+# Comments should start with a space.
+LeadingCommentSpace:
+  Enabled: false
+
+# Document classes and non-namespace modules.
+Documentation:
+  Enabled: false
+
+##################### Rails ##################################
+
+# Use sexy validations.
+Validation:
+  Enabled: true

@@ -6,6 +6,7 @@
 # the appropriate times will be set to nil.
 class Location < ActiveRecord::Base
 
+  include ActionView::Helpers::LocationsHelper
   include IceCube
 
   # The weekdays/weekends property is a serialized String representing an Array
@@ -21,10 +22,10 @@ class Location < ActiveRecord::Base
 
   # Location names are mandatory, and should always be unique.
   #
-  # TODO test validations
+  # TODO: test validations
   validates :name,
-    presence: true,
-    uniqueness: true
+            presence: true,
+            uniqueness: true
 
   # A callback that runs before any Location is saved.
   before_save :adjust_times
@@ -37,9 +38,9 @@ class Location < ActiveRecord::Base
   #
   # @return [Boolean] true if the Location is open at the given Time
   #
-  # TODO refactor
-  def open? time=Time.current
-    part_of_week = Location.is_weekday?(time) ? hours[0] : hours[1]
+  # TODO: refactor
+  def open?(time=Time.current)
+    part_of_week = is_weekday?(time) ? hours[0] : hours[1]
     return false if part_of_week.nil?
     part_of_week.any? do |hour_range|
       start_time = time.midnight + hour_range.begin
@@ -60,8 +61,8 @@ class Location < ActiveRecord::Base
   # @return [Boolean] true if the Location is ever open during the appropriate
   #   part of the week
   #
-  # TODO refactor
-  def open_on? part_of_week
+  # TODO: refactor
+  def open_on?(part_of_week)
     if part_of_week == :weekdays
       hours[0].present?
     elsif part_of_week == :weekends
@@ -73,43 +74,14 @@ class Location < ActiveRecord::Base
 
   private
 
-  # Returns true if the given Time is on a weekday (Monday-Friday).
-  #
-  # @param [Time] time the Time to test (only its date matters)
-  #
-  # @return [Boolean] true if the Time is on a weekday
-  def self.is_weekday? time
-    (1..5) === time.wday
-  end
-
-  # Returns a corrected version of a time Range that ensures that the close time
-  # is after the open time. If a Range needs to be corrected, a copy of it with
-  # the end advanced a day is returned. Otherwise, the unmodified Range is
-  # returned.
-  #
-  # @param [Range] time_range a Range of Integers to correct
-  #
-  # @return [Range] a corrected copy of the Range, or the original Range if it
-  #   does not need to be corrected
-  #
-  # TODO refactor
-  def self.correct_time_range time_range
-    if time_range.begin < time_range.end
-      time_range
-    else
-      new_end = time_range.end + 1.day
-      time_range.begin...new_end
-    end
-  end
-
   # A callback that runs before any Location is saved. This adds a day to end
   # times if needed to ensure that the end times are always after their matching
   # start times.
   #
-  # TODO refactor
+  # TODO: refactor
   def adjust_times
     hours.each do |period|
-      period.map! { |time_range| Location.correct_time_range time_range } if period.present?
+      period.map! { |time_range| correct_time_range time_range } if period.present?
     end
   end
 
