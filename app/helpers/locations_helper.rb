@@ -13,6 +13,26 @@ module LocationsHelper
   # strftime.
   TIME_FORMAT = '%l:%M %P'
 
+  # Returns a corrected version of a time Range that ensures that the close time
+  # is after the open time. If a Range needs to be corrected, a copy of it with
+  # the end advanced a day is returned. Otherwise, the unmodified Range is
+  # returned.
+  #
+  # @param [Range] time_range a Range of Integers to correct
+  #
+  # @return [Range] a corrected copy of the Range, or the original Range if it
+  #   does not need to be corrected
+  #
+  # TODO refactor
+  def correct_time_range(time_range)
+    if time_range.begin < time_range.end
+      time_range
+    else
+      new_end = time_range.end + 1.day
+      time_range.begin...new_end
+    end
+  end
+
   # Generates a text display of the hours of a given location during either
   # weekdays or weekends.
   #
@@ -48,6 +68,15 @@ module LocationsHelper
     end
 
     result
+  end
+
+  # Returns true if the given Time is on a weekday (Monday-Friday).
+  #
+  # @param [Time] time the Time to test (only its date matters)
+  #
+  # @return [Boolean] true if the Time is on a weekday
+  def is_weekday?(time)
+    (1..5).include? time.wday
   end
 
 end
