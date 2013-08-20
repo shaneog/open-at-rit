@@ -39,7 +39,7 @@ class Location < ActiveRecord::Base
   # @return [Boolean] true if the Location is open at the given Time
   #
   # TODO: refactor
-  def open?(time=Time.current)
+  def open?(time = Time.current)
     part_of_week = is_weekday?(time) ? hours[0] : hours[1]
     return false if part_of_week.nil?
     part_of_week.any? do |hour_range|
