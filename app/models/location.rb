@@ -6,6 +6,8 @@
 # the appropriate times will be set to nil.
 class Location < ActiveRecord::Base
 
+  include LocationsHelper
+
   # The weekdays/weekends property is a serialized String representing an Array
   # of Ranges of Integers. The Array represents all the hours for a given part
   # of the week. Each Range represents one part of the hours (open and close
@@ -19,10 +21,10 @@ class Location < ActiveRecord::Base
 
   # Location names are mandatory, and should always be unique.
   #
-  # TODO test validations
+  # TODO: test validations
   validates :name,
-    presence: true,
-    uniqueness: true
+            presence: true,
+            uniqueness: true
 
   # A callback that runs before any Location is saved.
   before_save :adjust_times
@@ -35,11 +37,11 @@ class Location < ActiveRecord::Base
   #
   # @return [Boolean] true if the Location is open at the given Time
   #
-  # TODO refactor
-  def open? time=Time.current
+  # TODO: refactor
+  def open?(time = Time.current)
     # Figure out if the time is between the hours for the appropriate part of
     # the week
-    part_of_week = Location.is_weekday?(time) ? :weekdays : :weekends
+    part_of_week = is_weekday?(time) ? :weekdays : :weekends
     return false unless open_on? part_of_week
 
     if part_of_week == :weekdays
@@ -50,13 +52,13 @@ class Location < ActiveRecord::Base
 
     time = time.seconds_since_midnight
 
-    # TODO fix this log message
+    # TODO: fix this log message
     #logger.debug "Checking to see if #{time} is between #{start_time} and #{end_time}."
 
-    # TODO find a better way to do this that won't break when moving between
+    # TODO: find a better way to do this that won't break when moving between
     # weekdays and weekends
     hours.any? do |time_range|
-      time_range.cover? time or time_range.cover? time + 1.day
+      time_range.cover?(time) || time_range.cover?(time + 1.day)
     end
   end
 
@@ -72,8 +74,8 @@ class Location < ActiveRecord::Base
   # @return [Boolean] true if the Location is ever open during the appropriate
   #   part of the week
   #
-  # TODO refactor
-  def open_on? part_of_week
+  # TODO: refactor
+  def open_on?(part_of_week)
     if part_of_week == :weekdays
       weekdays.present?
     elsif part_of_week == :weekends
@@ -85,43 +87,14 @@ class Location < ActiveRecord::Base
 
   private
 
-  # Returns true if the given Time is on a weekday (Monday-Friday).
-  #
-  # @param [Time] time the Time to test (only its date matters)
-  #
-  # @return [Boolean] true if the Time is on a weekday
-  def self.is_weekday? time
-    (1..5) === time.wday
-  end
-
-  # Returns a corrected version of a time Range that ensures that the close time
-  # is after the open time. If a Range needs to be corrected, a copy of it with
-  # the end advanced a day is returned. Otherwise, the unmodified Range is
-  # returned.
-  #
-  # @param [Range] time_range a Range of Integers to correct
-  #
-  # @return [Range] a corrected copy of the Range, or the original Range if it
-  #   does not need to be corrected
-  #
-  # TODO refactor
-  def self.correct_time_range time_range
-    if time_range.begin < time_range.end
-      time_range
-    else
-      new_end = time_range.end + 1.day
-      time_range.begin...new_end
-    end
-  end
-
   # A callback that runs before any Location is saved. This adds a day to end
   # times if needed to ensure that the end times are always after their matching
   # start times.
   #
-  # TODO refactor
+  # TODO: refactor
   def adjust_times
-    weekdays.map! { |time_range| Location.correct_time_range time_range } if weekdays.present?
-    weekends.map! { |time_range| Location.correct_time_range time_range } if weekends.present?
+    weekdays.map! { |time_range| correct_time_range time_range } if weekdays.present?
+    weekends.map! { |time_range| correct_time_range time_range } if weekends.present?
   end
 
 end
