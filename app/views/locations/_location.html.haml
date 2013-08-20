@@ -1,21 +1,22 @@
-%div{class: "col-sm-#{LocationsHelper::LOCATION_WIDTH} well location #{location.open? ? 'open' : 'closed'}"}
-  .name
-    .pull-middle
-      - if location.description
-        %abbr{title: location.description}= location.name
-      - else
-        = location.name
-  .info
-    .pull-middle
-      - if location.open_on?(:weekdays) || location.open_on?(:weekends)
-        %p
-          %strong> weekdays
-          \:
-          %span{class: location.open_on?(:weekdays) ? 'text-success' : 'text-danger'}= hours_for location, :weekdays
-        %p
-          %strong> weekends
-          \:
-          %span{class: location.open_on?(:weekends) ? 'text-success' : 'text-danger'}= hours_for location, :weekends
-      - else
-        %p
-          %span.text-danger always closed
+%div{class: "col-sm-#{LocationsHelper::LOCATION_WIDTH}"}
+  .well.location{class: location.open? ? 'open' : 'closed'}
+    .name
+      .pull-middle
+        - if location.description
+          %abbr{title: location.description}= location.name
+        - else
+          = location.name
+    .info
+      .pull-middle
+        - if location.open_on?(:weekdays) || location.open_on?(:weekends)
+          %p
+            %strong> weekdays
+            \:
+            %span{class: location.open_on?(:weekdays) ? 'text-success' : 'text-danger'}= hours_for location, :weekdays
+          %p
+            %strong> weekends
+            \:
+            %span{class: location.open_on?(:weekends) ? 'text-success' : 'text-danger'}= hours_for location, :weekends
+        - else
+          %p
+            %span.text-danger always closed
