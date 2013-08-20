@@ -32,7 +32,7 @@ def parse_hours(hours)
   hours.split(',').map { |time| parse_time_range time }
 end
 
-def parse_hours_for location
+def parse_hours_for(location)
   location.merge({
     'weekdays' => parse_hours(location['weekdays']),
     'weekends' => parse_hours(location['weekends'])

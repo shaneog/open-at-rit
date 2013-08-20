@@ -35,7 +35,7 @@ class ActiveSupport::TestCase
   # Ensures that a location is closed at a given time
   def assert_closed(location, time_str)
     assert("#{location.name} should be closed at #{time_str}") do
-      not location.open? Chronic.parse time_str
+      !location.open? Chronic.parse time_str
     end
   end
 

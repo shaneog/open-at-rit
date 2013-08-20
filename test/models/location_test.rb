@@ -32,11 +32,11 @@ class LocationTest < ActiveSupport::TestCase
   end
 
   test 'should know if a certain time is a weekday' do
-    ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'].each do |day|
+    %w[Monday Tuesday Wednesday Thursday Friday].each do |day|
       assert_weekday day
     end
 
-    ['Saturday', 'Sunday'].each { |day| assert_not_weekday day }
+    %w[Saturday Sunday].each { |day| assert_not_weekday day }
   end
 
   test 'should be initialized properly' do

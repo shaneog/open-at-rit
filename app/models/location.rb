@@ -21,7 +21,7 @@ class Location < ActiveRecord::Base
 
   # Location names are mandatory, and should always be unique.
   #
-  # TODO test validations
+  # TODO: test validations
   validates :name,
             presence: true,
             uniqueness: true
@@ -37,7 +37,7 @@ class Location < ActiveRecord::Base
   #
   # @return [Boolean] true if the Location is open at the given Time
   #
-  # TODO refactor
+  # TODO: refactor
   def open?(time = Time.current)
     # Figure out if the time is between the hours for the appropriate part of
     # the week
@@ -52,10 +52,10 @@ class Location < ActiveRecord::Base
 
     time = time.seconds_since_midnight
 
-    # TODO fix this log message
+    # TODO: fix this log message
     #logger.debug "Checking to see if #{time} is between #{start_time} and #{end_time}."
 
-    # TODO find a better way to do this that won't break when moving between
+    # TODO: find a better way to do this that won't break when moving between
     # weekdays and weekends
     hours.any? do |time_range|
       time_range.cover?(time) || time_range.cover?(time + 1.day)
@@ -74,7 +74,7 @@ class Location < ActiveRecord::Base
   # @return [Boolean] true if the Location is ever open during the appropriate
   #   part of the week
   #
-  # TODO refactor
+  # TODO: refactor
   def open_on?(part_of_week)
     if part_of_week == :weekdays
       weekdays.present?
@@ -91,7 +91,7 @@ class Location < ActiveRecord::Base
   # times if needed to ensure that the end times are always after their matching
   # start times.
   #
-  # TODO refactor
+  # TODO: refactor
   def adjust_times
     weekdays.map! { |time_range| correct_time_range time_range } if weekdays.present?
     weekends.map! { |time_range| correct_time_range time_range } if weekends.present?

@@ -23,7 +23,7 @@ module LocationsHelper
   # @return [Range] a corrected copy of the Range, or the original Range if it
   #   does not need to be corrected
   #
-  # TODO refactor
+  # TODO: refactor
   def correct_time_range(time_range)
     if time_range.begin < time_range.end
       time_range
@@ -47,7 +47,7 @@ module LocationsHelper
   #   appropriate part of the week, in the format "START to END, START to END,
   #   ..."
   #
-  # TODO refactor
+  # TODO: refactor
   def hours_for(location, part_of_week)
     return 'closed' unless location.open_on? part_of_week
 
