@@ -6,7 +6,7 @@
 # the appropriate times will be set to nil.
 class Location < ActiveRecord::Base
 
-  include ActionView::Helpers::LocationsHelper
+  include LocationsHelper
 
   # The weekdays/weekends property is a serialized String representing an Array
   # of Ranges of Integers. The Array represents all the hours for a given part

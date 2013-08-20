@@ -18,4 +18,4 @@
           %span{class: location.open_on?(:weekends) ? 'text-success' : 'text-danger'}= hours_for location, :weekends
       - else
         %p
-          %span.text-error always closed
+          %span.text-danger always closed
