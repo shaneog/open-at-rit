@@ -6,42 +6,57 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-require 'time'
-require File.dirname(__FILE__) + '/../config/environment.rb'
+require 'nokogiri'
+require 'open-uri'
+require 'yaml'
 
-# Set the time zone for Chronic
-Chronic.time_class = Time.zone
+# Based off of https://gist.github.com/toroidal-code/6235807
 
-# Parses a String with Chronic and returns a Time representation of it
-#
-# @param [String] time_string the string to parse (any valid Chronic string)
-#
-# @return [Time] the Time representation of the string created by Chronic
-def parse_time_range(time_string)
-  return nil if time_string.nil?
+module LocationScraper
 
-  start_time = Chronic.parse(time_string.split('-').first.strip).seconds_since_midnight
-  end_time   = Chronic.parse(time_string.split('-').last.strip).seconds_since_midnight
+  extend self
 
-  start_time...end_time
+  @pages = {
+    normal:           'http://www.rit.edu/fa/diningservices/content/hours-operation',
+    commencement:     'http://www.rit.edu/fa/diningservices/node/272',
+    spring_to_summer: 'http://www.rit.edu/fa/diningservices/node/273',
+    summer:           'http://www.rit.edu/fa/diningservices/node/274',
+    summer_to_fall:   'http://www.rit.edu/fa/diningservices/node/275'
+  }
+
+  def scrape(page = :normal)
+    doc = Nokogiri.HTML open @pages[page]
+    #doc.css('.field-item h3').map{ |location| location.content.strip }
+    doc.css('h3 a').map do |node|
+      if node.content == '' && node['id'] == node['name']
+        new_node = {
+          'name' => node.next.to_s,
+          'hours' => {}
+        }
+
+        table =  next_node_with(node.parent, :name, 'table')
+        rows =  table.search('tr')[1..-1]
+        rows.each do |row|
+          results = row.search('td//text()').map { |text|  text.to_s.strip }
+          new_node['hours'][results.first] = results[1..-1]
+        end
+
+        new_node
+      end
+    end.compact
+  end
+
+  private
+
+  def next_node_with(current, attribute, cond)
+    while current && current.send(attribute) != cond
+      current = current.next
+    end
+    current
+  end
+
 end
 
-def parse_hours(hours)
-  return nil if hours.nil?
-
-  hours.split(',').map { |time| parse_time_range time }
-end
-
-def parse_hours_for(location)
-  location.merge({
-    'hours' => [
-      parse_hours(location['weekdays']),
-      parse_hours(location['weekends'])
-    ]
-  }).except('weekdays', 'weekends')
-end
-
-# Create a Location object for each location from the data file
-YAML.load_file(Rails.root.join 'db/locations.yml').each do |location|
-  Location.create! parse_hours_for location
-end
+locations = LocationScraper.scrape
+puts locations.to_yaml
+#Location.create! locations

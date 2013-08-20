@@ -29,12 +29,6 @@ gem 'sass-rails'
 # Use CoffeeScript for scripts
 gem 'coffee-rails'
 
-# Use Bootstrap for styles and scripts
-gem 'anjlab-bootstrap-rails',
-  require: 'bootstrap-rails',
-  git: 'git://github.com/anjlab/bootstrap-rails.git',
-  branch: '3.0.0'
-
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
@@ -77,6 +71,9 @@ end
 # Time stuff
 gem 'chronic', '~> 0.9'
 gem 'ice_cube'
+
+# HTML parsing
+gem 'nokogiri'
 
 # Use New Relic for monitoring
 gem 'newrelic_rpm'
